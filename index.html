@@ -1,0 +1,2942 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nils Caspar — Der Weg der Meisterschaft</title>
+<meta name="description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ===========================
+     CSS CUSTOM PROPERTIES
+  =========================== */
+  :root {
+    --bg:        #F5F0E8;
+    --bg-dark:   #1A1710;
+    --ink:       #1A1710;
+    --ink-mid:   #4A4538;
+    --ink-light: #8A8070;
+    --gold:      #8C7440;
+    --gold-light:#C4A96A;
+    --cream:     #EDE6D6;
+    --line:      rgba(26,23,16,0.12);
+
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:  'Jost', sans-serif;
+
+    --max:  1160px;
+    --gap:  clamp(3rem, 8vw, 7rem);
+    --side: clamp(1.5rem, 5vw, 4rem);
+
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --slow: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ===========================
+     RESET & BASE
+  =========================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: opacity 0.3s var(--ease);
+  }
+
+  body.fade-out { opacity: 0; }
+
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
+
+  /* ===========================
+     TYPOGRAPHY
+  =========================== */
+  .t-display {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .t-heading {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .t-label {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .t-body {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.8;
+    color: var(--ink-mid);
+  }
+
+  /* ===========================
+     LAYOUT HELPERS
+  =========================== */
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--side);
+  }
+
+  .section {
+    padding: var(--gap) 0;
+  }
+
+  .section--dark {
+    background: var(--bg-dark);
+    color: var(--bg);
+  }
+
+  .section--cream {
+    background: var(--cream);
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem 0;
+  }
+
+  .divider--center {
+    margin: 2rem auto;
+  }
+
+  /* ===========================
+     NAVIGATION
+  =========================== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem var(--side);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  }
+
+  .nav.scrolled {
+    background: rgba(245,240,232,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+
+  .nav__logo {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+
+  .nav__logo span {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav__links a:hover,
+  .nav__links a.active {
+    color: var(--ink);
+    border-color: var(--gold);
+  }
+
+  .nav__cta {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    transition: background 0.25s, color 0.25s;
+    white-space: nowrap;
+  }
+
+  .nav__cta:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .nav__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .nav__burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav__burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav__burger.open span:nth-child(2) { opacity: 0; }
+  .nav__burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .nav__mobile {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .nav__mobile.open {
+    display: flex;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav__mobile a {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .nav__mobile a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .nav__links { display: none; }
+    .nav__cta { display: none; }
+    .nav__burger { display: flex; }
+  }
+
+  /* ===========================
+     BUTTONS
+  =========================== */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem 2.4rem;
+    transition: all 0.25s var(--ease);
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--bg);
+    border: 1px solid var(--ink);
+  }
+
+  .btn--primary:hover {
+    background: var(--bg-dark);
+    border-color: var(--bg-dark);
+  }
+
+  .btn--secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid currentColor;
+  }
+
+  .btn--secondary:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--gold);
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    letter-spacing: 0.14em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .btn--ghost:hover { border-color: var(--gold); }
+
+  .btn--outline-light {
+    background: transparent;
+    color: var(--bg);
+    border: 1px solid rgba(245,240,232,0.4);
+  }
+
+  .btn--outline-light:hover {
+    background: var(--bg);
+    color: var(--bg-dark);
+  }
+
+  /* ===========================
+     PAGE SYSTEM
+  =========================== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===========================
+     HOME HERO
+  =========================== */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: clamp(4rem, 8vh, 7rem);
+    padding-top: 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(140,116,64,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(140,116,64,0.05) 0%, transparent 60%);
+  }
+
+  .hero__line-v {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: clamp(1.5rem, 5vw, 4rem);
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  }
+
+  .hero__content {
+    position: relative;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--side);
+    width: 100%;
+  }
+
+  .hero__label {
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--slow) 0.2s forwards;
+  }
+
+  .hero__headline {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(3.2rem, 8vw, 7.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s var(--slow) 0.4s forwards;
+  }
+
+  .hero__headline em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero__subline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ink-mid);
+    max-width: 55ch;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s var(--slow) 0.6s forwards;
+  }
+
+  .hero__note {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1s var(--slow) 0.75s forwards;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s var(--slow) 0.9s forwards;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    right: var(--side);
+    bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 1s var(--slow) 1.2s forwards;
+  }
+
+  .hero__scroll-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    writing-mode: vertical-rl;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.7); transform-origin: top; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===========================
+     MANIFEST SECTION
+  =========================== */
+  .manifest {
+    padding: var(--gap) 0;
+    background: var(--bg-dark);
+    color: var(--bg);
+  }
+
+  .manifest__inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 var(--side);
+    text-align: center;
+  }
+
+  .manifest__text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.85);
+  }
+
+  .manifest__text p { margin-bottom: 1.6em; }
+  .manifest__text p:last-child { margin-bottom: 0; }
+
+  .manifest__text em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  /* ===========================
+     PRINCIPLES SECTION
+  =========================== */
+  .principles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .principle-card {
+    background: var(--bg);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    transition: background 0.3s;
+  }
+
+  .principle-card:hover { background: var(--cream); }
+
+  .principle-card__number {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(140,116,64,0.2);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .principle-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .principle-card__text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 700px) {
+    .principles__grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===========================
+     STUFEN PREVIEW
+  =========================== */
+  .stufen-preview {
+    overflow: hidden;
+  }
+
+  .stufen-preview__track {
+    display: flex;
+    gap: 0;
+  }
+
+  .stufe-card {
+    flex: 0 0 clamp(240px, 30vw, 320px);
+    border-right: 1px solid var(--line);
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .stufe-card:hover { background: var(--cream); }
+  .stufe-card:last-child { border-right: none; }
+
+  .stufe-card__num {
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .stufe-card__name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .stufe-card__essenz {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .stufen-preview__scroll-hint {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    display: none;
+  }
+
+  @media (max-width: 800px) {
+    .stufen-preview__scroll-hint { display: block; }
+    .stufen-preview__track { overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; }
+    .stufe-card { scroll-snap-align: start; }
+  }
+
+  /* ===========================
+     MENTORING PREVIEW / GENERIC CONTENT BLOCK
+  =========================== */
+  .content-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .content-block { grid-template-columns: 1fr; }
+  }
+
+  /* ===========================
+     SCHRIFTEN PREVIEW
+  =========================== */
+  .schriften-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--line);
+  }
+
+  .schrift-card {
+    background: var(--bg);
+    padding: 2rem;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+
+  .schrift-card:hover { background: var(--cream); }
+
+  .schrift-card__cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .schrift-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .schrift-card__excerpt {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
+    .schriften-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===========================
+     PARTNER BAND
+  =========================== */
+  .partner-band {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  @media (max-width: 640px) {
+    .partner-band { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+
+  .partner-band__text {
+    flex: 1;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ===========================
+     PROJEKTE CARDS
+  =========================== */
+  .projekte-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .projekt-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    cursor: pointer;
+  }
+
+  .projekt-card:hover { background: var(--cream); }
+
+  .projekt-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .projekt-card__sub {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+  }
+
+  .projekt-card__link {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .projekt-card:hover .projekt-card__link { border-color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .projekte-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===========================
+     PAGE HERO (inner pages)
+  =========================== */
+  .page-hero {
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-hero__label { margin-bottom: 1.5rem; }
+
+  .page-hero__headline {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 18ch;
+    margin-bottom: 2rem;
+  }
+
+  .page-hero__sub {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    color: var(--ink-mid);
+    max-width: 55ch;
+    line-height: 1.8;
+  }
+
+  /* ===========================
+     CONTENT PROSE
+  =========================== */
+  .prose {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.9;
+    color: var(--ink-mid);
+    max-width: 65ch;
+  }
+
+  .prose p { margin-bottom: 1.5em; }
+  .prose em { color: var(--ink); }
+  .prose strong { font-weight: 500; color: var(--ink); }
+
+  /* ===========================
+     STUFEN PAGE
+  =========================== */
+  .stufe-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 3rem;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .stufe-item:last-child { border-bottom: none; }
+
+  .stufe-item__num {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(140,116,64,0.25);
+    line-height: 1;
+    padding-top: 0.3rem;
+  }
+
+  .stufe-item__body {}
+
+  .stufe-item__label { margin-bottom: 0.75rem; }
+
+  .stufe-item__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .stufe-item__essenz {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    color: var(--ink-mid);
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--gold);
+    line-height: 1.6;
+  }
+
+  .stufe-item__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .stufe-item__cols { grid-template-columns: 1fr; gap: 1.5rem; }
+    .stufe-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+
+  .stufe-col__title {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .stufe-col__list {
+    list-style: none;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  .stufe-col__list li {
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .stufe-col__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8em;
+  }
+
+  .stufe-item__reife {
+    background: var(--cream);
+    padding: 1.25rem 1.5rem;
+    border-left: 2px solid var(--ink);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .stufe-item__reife em {
+    font-weight: 500;
+    font-style: normal;
+    margin-right: 0.4em;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ===========================
+     PRAXIS PAGE
+  =========================== */
+  .praxis-section {
+    border-bottom: 1px solid var(--line);
+    padding: 3.5rem 0;
+  }
+
+  .praxis-section:last-child { border-bottom: none; }
+
+  .praxis-section__header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .praxis-section__header { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  .praxis-section__num {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(140,116,64,0.15);
+    line-height: 1;
+  }
+
+  .praxis-section__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .praxis-protocol {
+    background: var(--cream);
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .praxis-protocol__title {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .praxis-protocol__list {
+    list-style: none;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  .praxis-protocol__list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--line);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .praxis-protocol__list li:last-child { border-bottom: none; }
+
+  .praxis-protocol__list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ===========================
+     WERKZEUG CARDS
+  =========================== */
+  .werkzeug-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 2rem;
+  }
+
+  .werkzeug-card {
+    background: var(--bg);
+    padding: 2rem 2.5rem;
+  }
+
+  .werkzeug-card__icon {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .werkzeug-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .werkzeug-card__text {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .werkzeug-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===========================
+     MENTORING PAGE
+  =========================== */
+  .formate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .format-card {
+    background: var(--bg);
+    padding: 2.5rem 2rem;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .format-card:hover {
+    border-color: var(--gold);
+    background: var(--cream);
+  }
+
+  .format-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .format-card__sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .format-card__text {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 700px) {
+    .formate-grid { grid-template-columns: 1fr; }
+  }
+
+  .messung-list {
+    list-style: none;
+  }
+
+  .messung-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .messung-item:last-child { border-bottom: none; }
+
+  .messung-item__icon {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+  }
+
+  .messung-item__text {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .messung-item__text strong {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .ablauf-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .ablauf-step {
+    background: var(--bg);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .ablauf-step__num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(140,116,64,0.3);
+    margin-bottom: 0.75rem;
+  }
+
+  .ablauf-step__title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .ablauf-step__text {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 700px) {
+    .ablauf-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .faq-item__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    gap: 1rem;
+  }
+
+  .faq-item__icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-item__icon { transform: rotate(45deg); }
+
+  .faq-item__a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--slow), padding 0.3s;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  .faq-item.open .faq-item__a {
+    max-height: 300px;
+    padding-bottom: 1.5rem;
+  }
+
+  /* ===========================
+     SCHRIFTEN PAGE
+  =========================== */
+  .schriften-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .filter-btn {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--ink-mid);
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .schriften-full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  @media (max-width: 760px) {
+    .schriften-full { grid-template-columns: 1fr; }
+  }
+
+  .lead-magnet {
+    background: var(--bg-dark);
+    color: var(--bg);
+    padding: 4rem 0;
+    margin-top: var(--gap);
+  }
+
+  .lead-magnet__inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--side);
+    text-align: center;
+  }
+
+  .lead-magnet__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--bg);
+  }
+
+  .lead-magnet__sub {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .lead-magnet__form {
+    display: flex;
+    gap: 0;
+    max-width: 420px;
+    margin: 0 auto 1rem;
+  }
+
+  .lead-magnet__input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(245,240,232,0.2);
+    border-right: none;
+    color: var(--bg);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .lead-magnet__input::placeholder { color: rgba(245,240,232,0.35); }
+  .lead-magnet__input:focus { border-color: var(--gold-light); }
+
+  .lead-magnet__btn {
+    padding: 1rem 1.5rem;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--bg);
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .lead-magnet__btn:hover { background: var(--gold-light); }
+
+  .lead-magnet__note {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 0.06em;
+  }
+
+  /* ===========================
+     KONTAKT PAGE
+  =========================== */
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .kontakt-grid { grid-template-columns: 1fr; }
+  }
+
+  .kontakt-form {}
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-bottom-color: var(--ink-light);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .form-textarea { min-height: 140px; resize: vertical; }
+
+  .form-radios {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .form-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-mid);
+  }
+
+  .form-radio-label input { accent-color: var(--gold); }
+  .form-radio-label:hover { color: var(--ink); }
+
+  /* ===========================
+     DER WEG PAGE
+  =========================== */
+  .prinzipien-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  @media (max-width: 700px) {
+    .prinzipien-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 440px) {
+    .prinzipien-grid { grid-template-columns: 1fr; }
+  }
+
+  .prinzip-card {
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  .prinzip-card__word {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+
+  .prinzip-card__text {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ===========================
+     FOOTER
+  =========================== */
+  footer {
+    background: var(--bg-dark);
+    color: rgba(245,240,232,0.6);
+    padding: 4rem 0 2.5rem;
+  }
+
+  .footer__inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--side);
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .footer__top { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .footer__brand {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--bg);
+    margin-bottom: 1rem;
+  }
+
+  .footer__tagline {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 30ch;
+  }
+
+  .footer__col-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer__links a {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.55);
+    transition: color 0.2s;
+  }
+
+  .footer__links a:hover { color: var(--bg); }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: rgba(245,240,232,0.3);
+  }
+
+  .footer__legal { display: flex; gap: 1.5rem; }
+  .footer__legal a { color: inherit; transition: color 0.2s; }
+  .footer__legal a:hover { color: var(--bg); }
+
+  /* ===========================
+     SECTION HEADER PATTERNS
+  =========================== */
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .section-header__left {}
+
+  .section-header__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    margin-top: 0.75rem;
+  }
+
+  /* ===========================
+     ETHIK / NOTE BOX
+  =========================== */
+  .note-box {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  .global-note {
+    background: var(--cream);
+    border-left: 3px solid var(--ink-light);
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 3rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ===========================
+     UTILS
+  =========================== */
+  .mt-1 { margin-top: 0.5rem; }
+  .mt-2 { margin-top: 1rem; }
+  .mt-3 { margin-top: 1.5rem; }
+  .mt-4 { margin-top: 2rem; }
+  .mt-5 { margin-top: 3rem; }
+  .mt-6 { margin-top: 4rem; }
+  .mb-2 { margin-bottom: 1rem; }
+  .mb-3 { margin-bottom: 1.5rem; }
+  .mb-4 { margin-bottom: 2rem; }
+
+  .text-center { text-align: center; }
+  .text-gold { color: var(--gold); }
+
+  /* ===========================
+     REVEAL ON SCROLL
+  =========================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s var(--slow), transform 0.7s var(--slow);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===========================
+     MOBILE RESPONSIVE EXTRAS
+  =========================== */
+  @media (max-width: 640px) {
+    :root { --side: 1.25rem; }
+    .btn { padding: 0.85rem 1.8rem; }
+    .hero__actions { flex-direction: column; align-items: flex-start; }
+    .hero__scroll { display: none; }
+  }
+
+  /* Line ornament */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 2rem 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.35;
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================
+     NAVIGATION
+======================== -->
+<nav class="nav" id="nav">
+  <div class="nav__logo" onclick="navigate('home')">
+    Nils<span> Caspar</span>
+  </div>
+  <ul class="nav__links">
+    <li><a href="#" onclick="navigate('der-weg');return false;" data-page="der-weg">Der Weg</a></li>
+    <li><a href="#" onclick="navigate('stufen');return false;" data-page="stufen">Stufen</a></li>
+    <li><a href="#" onclick="navigate('praxis');return false;" data-page="praxis">Praxis</a></li>
+    <li><a href="#" onclick="navigate('mentoring');return false;" data-page="mentoring">Mentoring</a></li>
+    <li><a href="#" onclick="navigate('schriften');return false;" data-page="schriften">Schriften</a></li>
+    <li><a href="#" onclick="navigate('kontakt');return false;" data-page="kontakt">Kontakt</a></li>
+  </ul>
+  <button class="nav__cta btn" onclick="navigate('kontakt')">In Resonanz treten</button>
+  <div class="nav__burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="nav__mobile" id="mobile-menu">
+  <a href="#" onclick="navigate('der-weg');toggleMenu();return false;">Der Weg</a>
+  <a href="#" onclick="navigate('stufen');toggleMenu();return false;">Stufen</a>
+  <a href="#" onclick="navigate('praxis');toggleMenu();return false;">Praxis</a>
+  <a href="#" onclick="navigate('mentoring');toggleMenu();return false;">Mentoring</a>
+  <a href="#" onclick="navigate('schriften');toggleMenu();return false;">Schriften</a>
+  <a href="#" onclick="navigate('kontakt');toggleMenu();return false;">Kontakt</a>
+</div>
+
+<!-- ========================
+     HOME PAGE
+======================== -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__line-v"></div>
+    <div class="hero__content">
+      <p class="t-label hero__label">nilscaspar.de · Meisterschaft · Mentoring</p>
+      <h1 class="hero__headline">Der Weg der <em>Meisterschaft</em></h1>
+      <p class="hero__subline">Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.</p>
+      <p class="hero__note">Nicht Worte führen. Taten führen.</p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
+        <button class="btn btn--secondary" onclick="navigate('schriften')">Eine Praxis erhalten</button>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span class="hero__scroll-text">Weiter</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Kurzmanifest -->
+  <section class="manifest">
+    <div class="manifest__inner">
+      <p class="t-label" style="color: var(--gold-light); margin-bottom: 2rem; display:block;">Manifest</p>
+      <div class="manifest__text reveal">
+        <p>Es gibt eine Wahrheit im Menschen, die keine Lehre braucht.<br>
+        Keine Tradition kann sie erzeugen. Kein System kann sie ersetzen.<br>
+        Sie ist bereits da — unter allem, was sich drübergelegt hat.</p>
+        <p>Meisterschaft ist der Weg, sie freizulegen.<br>
+        Nicht durch Akkumulierung von Wissen, sondern durch das Ablegen von Täuschungen.<br>
+        Nicht durch Rückzug, sondern durch Integration.</p>
+        <p>Ich stehe in der Tradition der wahren Meister dieser Erde:<br>
+        jener, die direkt auf die Wahrheit im Menschen gezeigt haben.<br>
+        Frei von Doktrin. Frei von Autorität. Gebunden nur an das, was sich im Leben beweist.</p>
+        <p><em>Die Sprache des Herzens besteht nicht aus Worten. Sie besteht aus Taten.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drei Prinzipien -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Grundprinzipien</p>
+          <h2 class="section-header__title">Stille · Wahrheit · Dienst</h2>
+        </div>
+      </div>
+      <div class="principles__grid reveal">
+        <div class="principle-card">
+          <div class="principle-card__number">I</div>
+          <h3 class="principle-card__title">Stille</h3>
+          <p class="principle-card__text">Unter dem Lärm der Gedanken liegt das, was immer wahr war. Stille ist nicht Abwesenheit — sie ist der Boden, aus dem klares Handeln entsteht. Wer nicht stille sein kann, handelt aus Reaktion, nicht aus Wahl.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card__number">II</div>
+          <h3 class="principle-card__title">Wahrheit</h3>
+          <p class="principle-card__text">Wahrheit ist kein Glaubenssystem. Sie ist das, was übrig bleibt, wenn alle Täuschungen abgefallen sind. Wahrhaftigkeit bedeutet: zuerst mit sich selbst — dann mit der Welt. Das ist die härteste und reinste Disziplin.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card__number">III</div>
+          <h3 class="principle-card__title">Dienst</h3>
+          <p class="principle-card__text">Dienst ist keine Aufopferung — er ist die freie Entscheidung eines Menschen, der weiß, wofür er da ist. Wer aus dem Wesenskern dient, erschöpft sich nicht. Er wächst. Das ist der Unterschied zwischen Pflicht und Berufung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stufen Preview -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Der Pfad</p>
+          <h2 class="section-header__title">7 Stufen der Meisterschaft</h2>
+        </div>
+        <button class="btn btn--ghost" onclick="navigate('stufen')">Alle Stufen →</button>
+      </div>
+    </div>
+    <div style="overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="stufen-preview__track reveal">
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe I</p>
+          <h3 class="stufe-card__name">Ruf & Erwachen</h3>
+          <p class="stufe-card__essenz">Etwas in dir erinnert sich — und du kannst nicht mehr so weiterleben wie bisher.</p>
+        </div>
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe II</p>
+          <h3 class="stufe-card__name">Läuterung & Wahrhaftigkeit</h3>
+          <p class="stufe-card__essenz">Täuschungen fallen — du lernst Wahrheit nicht zu denken, sondern zu leben.</p>
+        </div>
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe III</p>
+          <h3 class="stufe-card__name">Sammlung & Präsenz</h3>
+          <p class="stufe-card__essenz">Dein Geist wird stiller — Präsenz wird tragfähig.</p>
+        </div>
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe IV</p>
+          <h3 class="stufe-card__name">Anbindung & Wesenskern</h3>
+          <p class="stufe-card__essenz">Die Wahrheit wird nicht mehr gesucht — sie wird erinnert.</p>
+        </div>
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe V</p>
+          <h3 class="stufe-card__name">Hingabe & Dienst</h3>
+          <p class="stufe-card__essenz">Du stellst dein Leben in den Dienst — nicht als Opfer, sondern als Entscheidung.</p>
+        </div>
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe VI</p>
+          <h3 class="stufe-card__name">Integration</h3>
+          <p class="stufe-card__essenz">Spiritualität wird Alltag — Beziehung, Arbeit und Verantwortung werden Übungsfelder.</p>
+        </div>
+        <div class="stufe-card" onclick="navigate('stufen')">
+          <p class="stufe-card__num">Stufe VII</p>
+          <h3 class="stufe-card__name">Übertragung & Führung</h3>
+          <p class="stufe-card__essenz">Du wirst Raum — und führst durch Präsenz, nicht durch Theorie.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stufen-preview__scroll-hint">← Wischen →</div>
+  </section>
+
+  <!-- Mentoring Preview -->
+  <section class="section">
+    <div class="container">
+      <div class="content-block reveal">
+        <div>
+          <p class="t-label">Mentoring</p>
+          <h2 class="section-header__title" style="margin-top: 0.75rem; margin-bottom: 1.5rem;">Begleitung auf dem Weg</h2>
+          <p class="prose">Mentoring ist kein System, keine Methode, keine Doktrin. Es ist Begleitung in Richtung gelebter Wahrheit — für Menschen, die bereit sind, mehr als zu verstehen.</p>
+          <p class="prose">Für Suchende, die aufgehört haben zu suchen — und jetzt bereit sind zu leben. Für Führende, die wissen, dass Integrität keine Strategie ist. Für alle, die spüren: Es gibt einen nächsten Schritt, und er führt nach innen.</p>
+          <button class="btn btn--primary mt-5" onclick="navigate('mentoring')">Zum Mentoring</button>
+        </div>
+        <div style="border-left: 1px solid var(--line); padding-left: clamp(2rem, 5vw, 4rem);">
+          <p class="t-label mb-3">Für wen</p>
+          <ul style="list-style: none; font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink-mid); line-height: 2.1;">
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Suchende, die sich nach Tiefe sehnen</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Führende, die aus Integrität agieren wollen</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Menschen in Schwellensituationen</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Jene, die spüren: Wissen reicht nicht mehr</li>
+            <li style="padding: 0.6rem 0;">Alle, die bereit sind, klarer zu leben</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schriften Preview -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Schriften</p>
+          <h2 class="section-header__title">Texte als Übertragung</h2>
+        </div>
+        <button class="btn btn--ghost" onclick="navigate('schriften')">Alle Schriften →</button>
+      </div>
+      <div class="schriften-grid reveal">
+        <div class="schrift-card" onclick="navigate('schriften')">
+          <p class="schrift-card__cat">Meisterschaft</p>
+          <h3 class="schrift-card__title">Was Meisterschaft wirklich bedeutet</h3>
+          <p class="schrift-card__excerpt">Sie ist kein Ziel. Sie ist eine täglich erneuerte Haltung — gegen die Bequemlichkeit, für die Wahrheit.</p>
+        </div>
+        <div class="schrift-card" onclick="navigate('schriften')">
+          <p class="schrift-card__cat">Wesenskern</p>
+          <h3 class="schrift-card__title">Der Wesenskern trägt</h3>
+          <p class="schrift-card__excerpt">Darunter ist kein Nichts. Darunter ist das, was du immer warst — bevor die Schichten kamen.</p>
+        </div>
+        <div class="schrift-card" onclick="navigate('schriften')">
+          <p class="schrift-card__cat">Integration</p>
+          <h3 class="schrift-card__title">Alltag als Tempel</h3>
+          <p class="schrift-card__excerpt">Nicht das Retreat entscheidet, wer du bist. Sondern das Gespräch, der Konflikt, der Morgen nach der Erschöpfung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gemeinsame Räume -->
+  <section class="section">
+    <div class="container">
+      <div class="partner-band reveal">
+        <div class="partner-band__text">
+          Gemeinsam mit Lisa (<a href="https://naturklang.net" target="_blank" style="color: var(--gold); border-bottom: 1px solid var(--gold);">naturklang.net</a>) öffnen wir Praxisräume in der Natur: Ritualarbeit, Beziehungsarbeit und Jahreskreisfeste. Gemeinsame Räume dienen der Verkörperung — Natur, Rhythmus des Jahres, Beziehung als Übungsweg.
+        </div>
+        <a href="https://naturklang.net" target="_blank" class="btn btn--ghost">Zu Naturklang →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projekte -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Projekte</p>
+          <h2 class="section-header__title">Ausdrucksformen des Dienstes</h2>
+        </div>
+        <button class="btn btn--ghost" onclick="navigate('projekte')">Alle Projekte →</button>
+      </div>
+      <div class="projekte-grid reveal">
+        <div class="projekt-card">
+          <h3 class="projekt-card__title">Handpan Schule des Lebens</h3>
+          <p class="projekt-card__sub">Klang als Übungsweg · Präsenz · Verkörperung</p>
+          <span class="projekt-card__link">Mehr erfahren ↗</span>
+        </div>
+        <div class="projekt-card">
+          <h3 class="projekt-card__title">Grail Instruments</h3>
+          <p class="projekt-card__sub">Instrumentenbau · Handwerk · Resonanz</p>
+          <span class="projekt-card__link">Mehr erfahren ↗</span>
+        </div>
+        <div class="projekt-card">
+          <h3 class="projekt-card__title">Naturklang</h3>
+          <p class="projekt-card__sub">Ritualarbeit · Beziehungsarbeit · Jahreskreisfeste</p>
+          <a href="https://naturklang.net" target="_blank" class="projekt-card__link">naturklang.net ↗</a>
+        </div>
+        <div class="projekt-card">
+          <h3 class="projekt-card__title">The Art of Listening</h3>
+          <p class="projekt-card__sub">Archiv · Unterbau · Praxis des Zuhörens</p>
+          <span class="projekt-card__link">Mehr erfahren ↗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+
+<!-- ========================
+     DER WEG
+======================== -->
+<div class="page" id="page-der-weg">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Der Weg</p>
+      <h1 class="page-hero__headline">Ich folge keiner Doktrin.</h1>
+      <p class="page-hero__sub">Ich stehe in der Tradition jener Meister, die direkt auf die Wahrheit im Menschen zeigten — und tue dasselbe. Frei von Autorität. Gebunden nur an das, was sich im Leben beweist.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <div class="prose reveal">
+          <p>Nicht weil ich Traditionen verwerfe — sondern weil ich verstanden habe, dass Wahrheit keine Erlaubnis braucht. Kein System, kein Lehrer, kein Konzept kann dir geben, was du bereits bist.</p>
+          <p>Ich stehe in der Tradition jener Meister, die direkt auf die Wahrheit im Menschen zeigten. Nicht mit erhobenem Finger, nicht mit Versprechen, nicht mit Methoden, die dich abhängig machen. Sondern mit einer einfachen, unnachgiebigen Geste: <em>Hier. Das. Das ist es.</em></p>
+          <p>Was zählt, ist nicht die richtige Idee. Was zählt, ist das, was sich im Leben zeigt — in deinen Entscheidungen, in deiner Haltung, in dem, was du tust, wenn niemand zuschaut.</p>
+          <p>Dieser Weg führt nach innen — und dann direkt ins Leben zurück. In Beziehung, in Arbeit, in Körper, in Verantwortung. Nicht in den Rückzug. <em>Der Alltag ist der Tempel.</em></p>
+        </div>
+        <div class="reveal">
+          <p class="t-label mb-3">Was ist der Wesenskern?</p>
+          <div class="note-box">
+            <p style="font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.85; color: var(--ink-mid);">Der Wesenskern ist nicht ein Zustand, der irgendwann erreicht wird. Er ist das, was du bist — wenn du aufhörst, etwas anderes zu sein.</p>
+            <p style="font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.85; color: var(--ink-mid); margin-top: 1em;">Er braucht keine Steigerung, keine Bestätigung, keine besondere Erfahrung. Er ist der Grund — ruhig, klar, unveränderlich — unter allem Wechsel.</p>
+            <p style="font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.85; color: var(--ink-mid); margin-top: 1em;">Der Weg der Meisterschaft ist der Weg dorthin — und von dort aus ins Leben zurück.</p>
+          </div>
+          <div class="mt-4">
+            <p class="t-label mb-3">Das Göttliche — Erfahrung statt Dogma</p>
+            <p class="prose">Das Göttliche braucht keine Verteidigung. Es braucht Menschen, die bereit sind, in direktem Kontakt damit zu leben — ohne Zwischeninstanz, ohne System, ohne Versprechen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Haltung</p>
+          <h2 class="section-header__title">Sechs Prinzipien</h2>
+        </div>
+      </div>
+      <div class="prinzipien-grid reveal">
+        <div class="prinzip-card">
+          <p class="prinzip-card__word">Wahrhaftigkeit</p>
+          <p class="prinzip-card__text">Zuerst mit sich selbst. Dann mit der Welt. Die härteste und reinste Disziplin.</p>
+        </div>
+        <div class="prinzip-card">
+          <p class="prinzip-card__word">Präsenz</p>
+          <p class="prinzip-card__text">Vollständig hier sein — nicht als Technik, sondern als Entscheidung, der Wirklichkeit nicht auszuweichen.</p>
+        </div>
+        <div class="prinzip-card">
+          <p class="prinzip-card__word">Hingabe</p>
+          <p class="prinzip-card__text">Hingabe ist nicht Aufgabe des Selbst. Sie ist die Öffnung des Selbst — zu dem, was größer ist.</p>
+        </div>
+        <div class="prinzip-card">
+          <p class="prinzip-card__word">Dienst</p>
+          <p class="prinzip-card__text">Nicht aus Pflicht. Nicht aus Angst. Sondern als freier Ausdruck eines Menschen, der seinen Platz kennt.</p>
+        </div>
+        <div class="prinzip-card">
+          <p class="prinzip-card__word">Verkörperung</p>
+          <p class="prinzip-card__text">Wahrheit, die nicht im Körper ankommt, ist Konzept. Verkörperung ist der letzte Schritt — und der erste.</p>
+        </div>
+        <div class="prinzip-card">
+          <p class="prinzip-card__word">Integration</p>
+          <p class="prinzip-card__text">Beziehung, Arbeit, Verantwortung, Körper — das sind die Übungsfelder. Hier entscheidet sich alles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Werkzeuge, keine Autoritäten</p>
+          <h2 class="section-header__title">Traditionen als Werkzeuge</h2>
+        </div>
+      </div>
+      <div class="content-block reveal">
+        <div class="prose">
+          <p>Ich nutze Konzepte und Weisheitstraditionen. Vedanta, Sufismus, christische Mystik, phänomenologische Philosophie, Körperarbeit, Künste — viele haben Sprachen für das entwickelt, was sich letztlich nicht in Sprache fassen lässt.</p>
+          <p>Ich lese sie nicht als Autoritäten. Ich destilliere ihre Essenzen — und übersetze sie in eine Sprache, die für den Geist von heute verständlich ist. Eine Sprache, die nicht überwältigt, sondern orientiert. Die nicht bindet, sondern befreit.</p>
+          <p>Aber ich weiß: Jede Sprache stößt irgendwann an ihre Grenze. Die tiefste Wahrheit ist nicht formulierbar — sie ist lebbar.</p>
+          <p><em>Deshalb ist das Kriterium für mich immer eines: Beweist es sich im Leben? Wenn nicht, ist es ein interessantes Konzept — und weiter nichts.</em></p>
+        </div>
+        <div>
+          <blockquote style="font-family: var(--font-serif); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.7; color: var(--ink); border-left: 2px solid var(--gold); padding-left: 1.5rem; margin-bottom: 2rem;">
+            „Frei von jedweder Doktrin stehe ich in der Tradition der wahren Meister dieser Erde, die unmittelbar und direkt auf die Wahrheit im Menschen gedeutet haben."
+          </blockquote>
+          <p class="t-label mb-2">Die Sprache des Herzens</p>
+          <p class="prose" style="font-style: italic;">…besteht nicht aus Worten, sondern aus Taten.</p>
+        </div>
+      </div>
+      <div class="mt-6 text-center reveal">
+        <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
+        &nbsp;&nbsp;
+        <button class="btn btn--secondary mt-2" onclick="navigate('praxis')">Zur Praxis</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /der-weg -->
+
+
+<!-- ========================
+     STUFEN
+======================== -->
+<div class="page" id="page-stufen">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Entwicklungspfad</p>
+      <h1 class="page-hero__headline">7 Stufen der Meisterschaft</h1>
+      <p class="page-hero__sub">Gelebte Erfahrung als Orientierung — kein System, das dich bindet. Reife zeigt sich in Taten, nicht in Worten.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="global-note">
+        Diese Stufen sind keine Doktrin. Sie sind Orientierung aus gelebter Erfahrung. Jeder Weg ist anders. Stufen überschneiden sich, kehren wieder, vertiefen sich. Was zählt, ist nicht das Durchlaufen — sondern das Durchleben.
+      </div>
+
+      <!-- Stufe 1 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">I</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Ruf & Erwachen</p>
+          <h2 class="stufe-item__title">Das Erwachen</h2>
+          <p class="stufe-item__essenz">Etwas in dir erinnert sich — und du kannst nicht mehr so weiterleben wie bisher.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Unruhe und Sinnfrage werden nicht mehr übertönt.</li>
+                <li>Alte Identitäten verlieren Kraft.</li>
+                <li>Du stehst zwischen Sehnsucht und Angst.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Ehrlicher innerer Zug.</li>
+                <li>Erstes Vertrauen in eine Führung von innen.</li>
+                <li>Mut, hinzusehen.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Tägliche Stille (10 Minuten).</li>
+                <li>Eine Entscheidung pro Woche gegen Selbstbetrug.</li>
+                <li>Naturkontakt als Rückkehr zur Einfachheit.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Du hörst auf, dich zu betäuben — und beginnst, dein Leben neu auszurichten.</div>
+        </div>
+      </div>
+
+      <!-- Stufe 2 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">II</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Läuterung & Wahrhaftigkeit</p>
+          <h2 class="stufe-item__title">Die Wahrhaftigkeit</h2>
+          <p class="stufe-item__essenz">Täuschungen fallen — du lernst Wahrheit nicht zu denken, sondern zu leben.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Schatten, Muster, Abhängigkeiten treten hervor.</li>
+                <li>Grenzen müssen gesetzt werden.</li>
+                <li>Schmerz wird nicht mehr umgangen.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Integrität wird stärker als Komfort.</li>
+                <li>Klarheit im Nein.</li>
+                <li>Frieden durch Ehrlichkeit.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Radikale Wahrheitsfragen (täglich 5 Minuten).</li>
+                <li>Ein klares Nein, wo du dich bisher verraten hast.</li>
+                <li>Verantwortung ohne Schuld.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Du handelst wahrer — auch wenn es dich etwas kostet.</div>
+        </div>
+      </div>
+
+      <!-- Stufe 3 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">III</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Sammlung & Präsenz</p>
+          <h2 class="stufe-item__title">Die Sammlung</h2>
+          <p class="stufe-item__essenz">Dein Geist wird stiller — Präsenz wird tragfähig.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Zerstreuung, Impulsflucht, Überforderung.</li>
+                <li>Disziplin ohne Härte lernen.</li>
+                <li>Nervensystem beruhigen statt pushen.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Fokus, Klarheit, innere Stabilität.</li>
+                <li>Unabhängigkeit von Stimmung.</li>
+                <li>Tiefe Verkörperung.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Ein tägliches Meisterschaftsritual (gleich, einfach).</li>
+                <li>Atem/Körper (15 Minuten).</li>
+                <li>Wöchentliche Stillezeit ohne Input.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Du wirst verlässlich — in dir selbst, nicht nur nach außen.</div>
+        </div>
+      </div>
+
+      <!-- Stufe 4 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">IV</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Anbindung & Wesenskern</p>
+          <h2 class="stufe-item__title">Die Anbindung</h2>
+          <p class="stufe-item__essenz">Die Wahrheit wird nicht mehr gesucht — sie wird erinnert.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Feinere Täuschungen (spirituelles Ego, besondere Rollen).</li>
+                <li>Loslassen von Kontrolle.</li>
+                <li>Vertrauen ohne Beweise.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Innere Führung von innen.</li>
+                <li>Stille Freude, die nicht von Umständen abhängt.</li>
+                <li>Einfachheit als Kraft.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Stille als Heimat (täglich).</li>
+                <li>Handeln aus dem Wesenskern: eine Tat pro Tag.</li>
+                <li>Rückbindung in den Körper (Erdung).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Du reagierst weniger — und antwortest mehr aus Tiefe.</div>
+        </div>
+      </div>
+
+      <!-- Stufe 5 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">V</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Hingabe & Dienst</p>
+          <h2 class="stufe-item__title">Der Dienst</h2>
+          <p class="stufe-item__essenz">Du stellst dein Leben in den Dienst — nicht als Opfer, sondern als Entscheidung.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Prioritäten werden radikal neu geordnet.</li>
+                <li>Bequemlichkeit verliert Vorrang.</li>
+                <li>Demut statt Selbstdarstellung.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Kraft durch Commitment.</li>
+                <li>Reinheit der Absicht.</li>
+                <li>Liebe als Handlung.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Tägliche Ausrichtung: „Wem diene ich heute — in Wahrheit?"</li>
+                <li>Ein konkreter Dienstakt pro Woche.</li>
+                <li>Commitment schriftlich, schlicht.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Dein Leben wird geradliniger — weil es einem Höheren folgt.</div>
+        </div>
+      </div>
+
+      <!-- Stufe 6 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">VI</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Integration</p>
+          <h2 class="stufe-item__title">Der Alltag als Tempel</h2>
+          <p class="stufe-item__essenz">Spiritualität wird Alltag — Beziehung, Arbeit, Körper und Verantwortung werden Übungsfelder.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Inkonsistenzen werden sichtbar.</li>
+                <li>Wahrheit in Beziehungen wird gefordert.</li>
+                <li>Verantwortung ohne Drama.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Stabilität, Reife, Erdung.</li>
+                <li>Liebe als Klarheit.</li>
+                <li>Frieden ohne Rückzug.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Wöchentliche Integrationsbilanz: Taten statt Vorsätze.</li>
+                <li>Ein Konflikt wird wahrhaftig geklärt.</li>
+                <li>Körperpflege als Disziplin.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Menschen spüren dich als klar — nicht, weil du redest, sondern weil du lebst.</div>
+        </div>
+      </div>
+
+      <!-- Stufe 7 -->
+      <div class="stufe-item reveal">
+        <div class="stufe-item__num">VII</div>
+        <div class="stufe-item__body">
+          <p class="t-label stufe-item__label">Übertragung & Führung</p>
+          <h2 class="stufe-item__title">Die Übertragung</h2>
+          <p class="stufe-item__essenz">Du wirst Raum — und führst durch Präsenz, nicht durch Theorie.</p>
+          <div class="stufe-item__cols">
+            <div>
+              <p class="stufe-col__title">Prüfungen</p>
+              <ul class="stufe-col__list">
+                <li>Macht, Projektionen, Verantwortung.</li>
+                <li>Grenzen halten ohne Härte.</li>
+                <li>Demut bewahren, wenn Wirkung entsteht.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Gaben</p>
+              <ul class="stufe-col__list">
+                <li>Räume halten.</li>
+                <li>Wahrheit spiegeln.</li>
+                <li>Führung als Dienst.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="stufe-col__title">Praxis</p>
+              <ul class="stufe-col__list">
+                <li>Ethik: klare Grenzen, klare Absichten.</li>
+                <li>Regelmäßige Rückkehr in Stille (Selbstkorrektur).</li>
+                <li>Übertragung durch Tat: Vorleben statt Predigen.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="stufe-item__reife"><em>Reifezeichen</em> Deine Präsenz ordnet — ohne dass du kontrollierst.</div>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center reveal">
+        <p class="t-label mb-3">Begleitung auf dem Weg</p>
+        <button class="btn btn--primary" onclick="navigate('mentoring')">Zum Mentoring</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /stufen -->
+
+
+<!-- ========================
+     PRAXIS
+======================== -->
+<div class="page" id="page-praxis">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Praxis</p>
+      <h1 class="page-hero__headline">Taten, nicht Worte.</h1>
+      <p class="page-hero__sub">Nicht mehr wissen — anders leben. Das klingt einfach. Es ist das Schwerste, was es gibt.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal" style="max-width: 70ch;">
+        <p>Weil Wissen bequem ist und Täuschungen sich rational kostümieren. Weil der Verstand gerne so tut, als wäre Verstehen bereits Ankommen. Weil der nächste Impuls, das nächste Buch, das nächste Gespräch verlockender ist als die stille, wiederholte Begegnung mit dem, was jetzt gerade wahr ist.</p>
+        <p>Die Praxis hier ist keine Sammlung von Techniken. Sie ist ein Rahmen für das, was sich täglich beweisen muss: <em>Präsenz. Wahrhaftigkeit. Hingabe. Dienst. Verkörperung.</em></p>
+        <p>Nimm, was passt. Lass weg, was nicht dran ist. Aber fang an. Heute.</p>
+      </div>
+
+      <div class="mt-6">
+        <!-- Praxis 1 -->
+        <div class="praxis-section reveal">
+          <div class="praxis-section__header">
+            <div class="praxis-section__num">01</div>
+            <div>
+              <p class="t-label mb-2">Stille &amp; Präsenz</p>
+              <h2 class="praxis-section__title">Das 10-Minuten-Protokoll</h2>
+              <p class="prose">Zehn Minuten täglich. Kein Mantra, kein Ziel, kein richtiges Ergebnis. Sitzen. Beobachten, ohne zu kommentieren. Deine einzige Aufgabe: bleib.</p>
+              <div class="praxis-protocol mt-4">
+                <p class="praxis-protocol__title">Tägliche Praxis</p>
+                <ul class="praxis-protocol__list">
+                  <li>Morgens, vor dem ersten Input — 10 Minuten Stille.</li>
+                  <li>Abends: eine Frage — <em>Wo habe ich mich heute betäubt?</em></li>
+                  <li>Wochenpraxis: 45 Minuten Stille, kein Input, kein Ergebnis.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Praxis 2 -->
+        <div class="praxis-section reveal">
+          <div class="praxis-section__header">
+            <div class="praxis-section__num">02</div>
+            <div>
+              <p class="t-label mb-2">Wahrhaftigkeit</p>
+              <h2 class="praxis-section__title">Radikale Wahrheitsfragen</h2>
+              <p class="prose">Fünf Minuten täglich. Eine Frage: <em>Was ist jetzt wirklich wahr — das ich nicht ausspreche?</em> Nicht als Analyse. Als direkte Begegnung.</p>
+              <div class="praxis-protocol mt-4">
+                <p class="praxis-protocol__title">Tägliche Praxis</p>
+                <ul class="praxis-protocol__list">
+                  <li>Jeden Morgen: Wo lüge ich mich gerade an?</li>
+                  <li>Ein klares Nein pro Woche — wo du dich bisher verraten hast.</li>
+                  <li>Verantwortung übernehmen, ohne Schuld zu tragen.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Praxis 3 -->
+        <div class="praxis-section reveal">
+          <div class="praxis-section__header">
+            <div class="praxis-section__num">03</div>
+            <div>
+              <p class="t-label mb-2">Hingabe &amp; Dienst</p>
+              <h2 class="praxis-section__title">Tägliche Ausrichtung</h2>
+              <p class="prose">Jeden Morgen eine Frage, bevor du anfängst: <em>Wem diene ich heute — in Wahrheit?</em> Nicht als Pflicht, sondern als Wahl.</p>
+              <div class="praxis-protocol mt-4">
+                <p class="praxis-protocol__title">Tägliche Praxis</p>
+                <ul class="praxis-protocol__list">
+                  <li>Morgens: Ausrichtung auf einen konkreten Dienstakt.</li>
+                  <li>Commitment schriftlich festhalten — schlicht, ohne Drama.</li>
+                  <li>Abends prüfen: Habe ich aus Freiheit oder aus Angst gehandelt?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Praxis 4 -->
+        <div class="praxis-section reveal">
+          <div class="praxis-section__header">
+            <div class="praxis-section__num">04</div>
+            <div>
+              <p class="t-label mb-2">Verkörperung</p>
+              <h2 class="praxis-section__title">Atem, Körper, Natur</h2>
+              <p class="prose">Wahrheit, die nicht im Körper ankommt, ist Konzept. Verkörperung ist kein Extra. Sie ist die Bedingung für Integration.</p>
+              <div class="praxis-protocol mt-4">
+                <p class="praxis-protocol__title">Tägliche Praxis</p>
+                <ul class="praxis-protocol__list">
+                  <li>15 Minuten Atem/Körperarbeit täglich — ankommen, nicht performen.</li>
+                  <li>Wöchentlicher Naturkontakt als Rückkehr zur Einfachheit.</li>
+                  <li>Körperpflege als Disziplin — nicht als Pflege.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Werkzeuge -->
+        <div class="praxis-section reveal">
+          <div class="praxis-section__header">
+            <div class="praxis-section__num">+</div>
+            <div>
+              <p class="t-label mb-2">Keine Autoritäten, nur Hilfen</p>
+              <h2 class="praxis-section__title">Werkzeuge</h2>
+              <p class="prose">Was hier folgt, sind Werkzeuge — keine Methoden, nach denen ich mich benenne. Werkzeuge entstehen aus Bedarf, nicht aus System.</p>
+            </div>
+          </div>
+          <div class="werkzeug-grid mt-4">
+            <div class="werkzeug-card">
+              <p class="werkzeug-card__icon">∅</p>
+              <h3 class="werkzeug-card__title">Atma Vichara</h3>
+              <p class="werkzeug-card__text">Die Praxis der direkten Selbstbefragung: <em>Wer fragt? Wer denkt? Wer leidet?</em> — nicht als philosophische Übung, sondern als direkter Zug zurück in den Wesenskern.</p>
+            </div>
+            <div class="werkzeug-card">
+              <p class="werkzeug-card__icon">◯</p>
+              <h3 class="werkzeug-card__title">Künste als Praxisräume</h3>
+              <p class="werkzeug-card__text">Poesie, Performing Arts, Musik, bildende Kunst — nicht als Selbstausdruck, sondern als Disziplin der Präsenz. Die Kunst gibt zurück, was sie verlangt: vollständige Anwesenheit.</p>
+            </div>
+            <div class="werkzeug-card">
+              <p class="werkzeug-card__icon">△</p>
+              <h3 class="werkzeug-card__title">Führungscoaching</h3>
+              <p class="werkzeug-card__text">Entscheidungen, Integrität, Verantwortung, Dienst — für Menschen, die führen und wissen wollen, ob sie das aus dem Wesenskern tun oder aus Angst.</p>
+            </div>
+            <div class="werkzeug-card">
+              <p class="werkzeug-card__icon">…</p>
+              <h3 class="werkzeug-card__title">Und mehr —</h3>
+              <p class="werkzeug-card__text">Werkzeuge entstehen aus dem, was gebraucht wird. Wenn etwas hilft, ist es gut. Wenn es nicht hilft, fällt es weg. Kein System, das dich bindet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ornament reveal">Praxis beginnt jetzt</div>
+
+      <div class="text-center reveal mt-4">
+        <button class="btn btn--primary" onclick="navigate('schriften')">Eine Praxis erhalten</button>
+        &nbsp;&nbsp;
+        <button class="btn btn--secondary" onclick="navigate('kontakt')">In Resonanz treten</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /praxis -->
+
+
+<!-- ========================
+     MENTORING
+======================== -->
+<div class="page" id="page-mentoring">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Mentoring</p>
+      <h1 class="page-hero__headline">Kein System. Kein Versprechen. Nur ein Prozess.</h1>
+      <p class="page-hero__sub">Begleitung in Richtung gelebter Wahrheit. Für die, die bereit sind, mehr als zu verstehen.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Einstieg -->
+      <div class="content-block reveal">
+        <div class="prose">
+          <p>Mentoring ist kein System. Es ist keine Methode. Es ist keine Doktrin.</p>
+          <p>Es ist Begleitung — in Richtung gelebter Wahrheit. Für Menschen, die bereit sind, mehr als zu verstehen.</p>
+          <p>Ich arbeite nicht mit Programmen, die dich optimieren. Ich arbeite mit dem, was sich im Prozess zeigt: deinen Mustern, deinen Täuschungen, deiner Kraft, deiner Feigheit, deiner Sehnsucht, deiner Bereitschaft — oder ihrer Abwesenheit.</p>
+          <p><em>Das ist das Material. Daraus entsteht, was entsteht.</em></p>
+          <p>Das Ziel ist nicht Klarheit als abstraktes Gut. Das Ziel ist ein Leben, das klarer wird. Beziehungen, die wahrhaftiger werden. Entscheidungen, die aus einem Zentrum kommen.</p>
+          <p>Wer bereit ist, den Weg zu gehen, ist willkommen. Wer ein Programm sucht, das ihn nicht herausfordert, findet es woanders.</p>
+        </div>
+        <div>
+          <p class="t-label mb-3">Für wen</p>
+          <ul style="list-style: none; font-family: var(--font-serif); font-size: 1rem; color: var(--ink-mid); line-height: 2;">
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Suchende, die aufgehört haben zu suchen — und jetzt bereit sind zu leben</li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Führende, die wissen, dass Integrität keine Strategie ist</li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Menschen in Schwellen- und Transformationssituationen</li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Jene, die spüren: Wissen reicht nicht mehr</li>
+            <li style="padding: 0.75rem 0; padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Alle, die bereit sind, klarer zu leben — auch wenn es etwas kostet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formate -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Formate</p>
+          <h2 class="section-header__title">Wie wir arbeiten</h2>
+        </div>
+      </div>
+      <div class="formate-grid reveal">
+        <div class="format-card">
+          <p class="format-card__sub">Signature · Fortlaufend</p>
+          <h3 class="format-card__title">1:1 Meisterschafts-Mentoring</h3>
+          <p class="format-card__text">Regelmäßige Einzelsitzungen über mehrere Monate. Tiefer Prozess, kontinuierliche Begleitung. Für Menschen, die einen echten Weg gehen wollen — nicht nur eine Erfahrung sammeln.</p>
+        </div>
+        <div class="format-card">
+          <p class="format-card__sub">Intensiv · 1 Tag oder 3 Sessions</p>
+          <h3 class="format-card__title">Intensiv-Format</h3>
+          <p class="format-card__text">Für Schwellensituationen, Entscheidungen, Neuausrichtungen. Konzentrierte Arbeit in kurzer Zeit. Kein Ersatz für den langen Weg — aber manchmal der richtige erste Schritt.</p>
+        </div>
+        <div class="format-card">
+          <p class="format-card__sub">Retreat · Prozessraum</p>
+          <h3 class="format-card__title">Retreat &amp; Prozessraum</h3>
+          <p class="format-card__text">Räume in der Natur. Stille, Körper, Wahrheit. Teils gemeinsam mit Lisa (naturklang.net). Für Verkörperung und Tiefe, die im Alltag nicht entsteht — aber dorthin zurückwirkt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Prozess</p>
+          <h2 class="section-header__title">Der Ablauf</h2>
+        </div>
+      </div>
+      <div class="ablauf-steps reveal">
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">1</div>
+          <h3 class="ablauf-step__title">Anfrage</h3>
+          <p class="ablauf-step__text">Kurze Selbstvorstellung. Was treibt dich an? Was sucht Klärung?</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">2</div>
+          <h3 class="ablauf-step__title">Orientierungsgespräch</h3>
+          <p class="ablauf-step__text">45 Minuten. Kein Verkaufsgespräch. Ehrliche Begegnung — für uns beide.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">3</div>
+          <h3 class="ablauf-step__title">Zyklus</h3>
+          <p class="ablauf-step__text">Regelmäßige Sitzungen. Praxis. Begleitung. Konkrete Schritte im Alltag.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">4</div>
+          <h3 class="ablauf-step__title">Integration</h3>
+          <p class="ablauf-step__text">Was sich zeigt, wird ins Leben integriert — nicht verwaltet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Woran du mich misst -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Integrität</p>
+          <h2 class="section-header__title">Woran du mich misst</h2>
+        </div>
+      </div>
+      <p class="prose reveal mb-4">Ich mache keine Versprechen über Ergebnisse. Aber ich mache mich an Kriterien messbar — und das sind diese:</p>
+      <ul class="messung-list reveal">
+        <li class="messung-item">
+          <span class="messung-item__icon">I</span>
+          <div class="messung-item__text">
+            <strong>Wird dein Leben klarer und wahrhaftiger?</strong>
+            Nicht subjektiv klarer — sondern in dem, was sichtbar ist. In deinen Entscheidungen. In dem, wofür du eintrittst und wofür nicht.
+          </div>
+        </li>
+        <li class="messung-item">
+          <span class="messung-item__icon">II</span>
+          <div class="messung-item__text">
+            <strong>Wirst du fähiger zu handeln — statt nur zu verstehen?</strong>
+            Verstehen ohne Handeln ist intellektuelle Unterhaltung. Der Prozess ist dann erfolgreich, wenn sich Handlungsfähigkeit vertieft — in konkreten Situationen, nicht in Theorie.
+          </div>
+        </li>
+        <li class="messung-item">
+          <span class="messung-item__icon">III</span>
+          <div class="messung-item__text">
+            <strong>Wächst deine Integrität in Beziehung, Arbeit und Verantwortung?</strong>
+            Meisterschaft zeigt sich nicht im Retreat. Sie zeigt sich im Streitgespräch, im Scheitern, in der Versuchung, in der Erschöpfung.
+          </div>
+        </li>
+        <li class="messung-item">
+          <span class="messung-item__icon">IV</span>
+          <div class="messung-item__text">
+            <strong>Vertieft sich dein Dienst am Leben?</strong>
+            Nicht als Opfer. Nicht als Kompromiss. Sondern als freie Entscheidung eines Menschen, der erkannt hat, wofür er da ist. Daran kannst du mich messen.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Ethik -->
+  <section class="section">
+    <div class="container">
+      <div class="content-block reveal">
+        <div>
+          <p class="t-label mb-3">Ethik &amp; Sicherheit</p>
+          <h2 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; font-style: italic; margin-bottom: 1.5rem;">Klare Grenzen, klare Absichten.</h2>
+          <div class="note-box">
+            <p style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.85;">Ich erschaffe keine Abhängigkeit. Mein Ziel ist, dass du irgendwann keine Begleitung mehr brauchst — weil du die Führung von innen verinnerlicht hast.</p>
+            <p style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.85; margin-top: 1em;">Ich ersetze keine therapeutische Behandlung. Ich bin kein Therapeut. Bei klinischen Themen empfehle ich entsprechende Fachleute.</p>
+            <p style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.85; margin-top: 1em;">Ich arbeite nur mit Menschen, bei denen ich ehrlich sagen kann: Ich kann dir in dieser Situation helfen.</p>
+          </div>
+        </div>
+        <div>
+          <p class="t-label mb-3">FAQ</p>
+          <div class="faq-item">
+            <div class="faq-item__q" onclick="toggleFaq(this)">
+              <span>Wie lange dauert ein Mentoring-Prozess?</span>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__a">Tiefe Prozesse brauchen Zeit. In der Regel arbeiten wir über 6–12 Monate zusammen. Intensiv-Formate sind kürzer — aber kein Ersatz für den langen Weg.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-item__q" onclick="toggleFaq(this)">
+              <span>Findet das Mentoring online oder in Person statt?</span>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__a">Beides ist möglich. Online-Arbeit trägt genauso wie Präsenz — wenn die Bereitschaft vorhanden ist. Retreats finden in der Regel in Person statt.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-item__q" onclick="toggleFaq(this)">
+              <span>Was ist der Unterschied zu Coaching?</span>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__a">Coaching optimiert. Mentoring transformiert — oder es versucht es. Ich gehe davon aus, dass die tiefsten Fragen keine Techniken brauchen, sondern Begleitung in die Wahrheit.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-item__q" onclick="toggleFaq(this)">
+              <span>Welcher Glaube oder welche Tradition ist Voraussetzung?</span>
+              <span class="faq-item__icon">+</span>
+            </div>
+            <div class="faq-item__a">Keine. Dieser Weg ist frei von Doktrin. Religiöse, spirituelle oder agnostische Hintergründe sind alle willkommen — vorausgesetzt, du bringst Ehrlichkeit mit.</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 text-center reveal">
+        <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
+        &nbsp;&nbsp;
+        <button class="btn btn--secondary" onclick="navigate('schriften')">Eine Praxis erhalten</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /mentoring -->
+
+
+<!-- ========================
+     SCHRIFTEN
+======================== -->
+<div class="page" id="page-schriften">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Schriften</p>
+      <h1 class="page-hero__headline">Texte als Übertragung</h1>
+      <p class="page-hero__sub">Nicht Content. Nicht Information. Texte, die auf etwas zeigen — und dich nicht in Ruhe lassen.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="schriften-filter reveal">
+        <button class="filter-btn active" onclick="filterSchriften('all', this)">Alle</button>
+        <button class="filter-btn" onclick="filterSchriften('wesenskern', this)">Wesenskern</button>
+        <button class="filter-btn" onclick="filterSchriften('meisterschaft', this)">Meisterschaft</button>
+        <button class="filter-btn" onclick="filterSchriften('wahrheit', this)">Wahrheit</button>
+        <button class="filter-btn" onclick="filterSchriften('dienst', this)">Dienst</button>
+        <button class="filter-btn" onclick="filterSchriften('praxis', this)">Praxis</button>
+        <button class="filter-btn" onclick="filterSchriften('integration', this)">Integration</button>
+      </div>
+      <div class="schriften-full reveal" id="schriften-grid">
+        <div class="schrift-card" data-cat="meisterschaft">
+          <p class="schrift-card__cat">Meisterschaft</p>
+          <h3 class="schrift-card__title">Was Meisterschaft wirklich bedeutet</h3>
+          <p class="schrift-card__excerpt">Sie ist kein Ziel. Sie ist eine täglich erneuerte Haltung — gegen die Bequemlichkeit, für die Wahrheit.</p>
+        </div>
+        <div class="schrift-card" data-cat="wesenskern">
+          <p class="schrift-card__cat">Wesenskern</p>
+          <h3 class="schrift-card__title">Der Wesenskern trägt</h3>
+          <p class="schrift-card__excerpt">Darunter ist kein Nichts. Darunter ist das, was du immer warst — bevor die Schichten kamen.</p>
+        </div>
+        <div class="schrift-card" data-cat="integration">
+          <p class="schrift-card__cat">Integration</p>
+          <h3 class="schrift-card__title">Alltag als Tempel</h3>
+          <p class="schrift-card__excerpt">Nicht das Retreat entscheidet, wer du bist. Sondern das Gespräch, der Konflikt, der Morgen nach der Erschöpfung.</p>
+        </div>
+        <div class="schrift-card" data-cat="wahrheit">
+          <p class="schrift-card__cat">Wahrheit</p>
+          <h3 class="schrift-card__title">Die härteste Disziplin</h3>
+          <p class="schrift-card__excerpt">Wahrhaftigkeit beginnt nicht in der Welt. Sie beginnt in dem Moment, in dem du aufhörst, dich selbst zu belügen.</p>
+        </div>
+        <div class="schrift-card" data-cat="dienst">
+          <p class="schrift-card__cat">Dienst</p>
+          <h3 class="schrift-card__title">Dienst ist keine Aufopferung</h3>
+          <p class="schrift-card__excerpt">Er ist die freie Entscheidung eines Menschen, der weiß, wofür er da ist. Der Unterschied zwischen Pflicht und Berufung ist dieser eine Satz.</p>
+        </div>
+        <div class="schrift-card" data-cat="praxis">
+          <p class="schrift-card__cat">Praxis</p>
+          <h3 class="schrift-card__title">Zehn Minuten</h3>
+          <p class="schrift-card__excerpt">Mehr braucht es nicht, um zu beginnen. Aber zehn Minuten täglich verändern, was keine Stunde einmal pro Woche kann.</p>
+        </div>
+        <div class="schrift-card" data-cat="wesenskern">
+          <p class="schrift-card__cat">Wesenskern</p>
+          <h3 class="schrift-card__title">Unter allen Täuschungen</h3>
+          <p class="schrift-card__excerpt">Was bleibt, wenn alles Falsche fällt? Das ist die eine Frage, die das Leben verändert.</p>
+        </div>
+        <div class="schrift-card" data-cat="meisterschaft">
+          <p class="schrift-card__cat">Meisterschaft</p>
+          <h3 class="schrift-card__title">Demut als Kraft</h3>
+          <p class="schrift-card__excerpt">Demut ist nicht Unterwerfung. Sie ist die Haltung dessen, der erkannt hat, dass es größer ist als er — und der bereit ist, darin seinen Platz einzunehmen.</p>
+        </div>
+        <div class="schrift-card" data-cat="integration">
+          <p class="schrift-card__cat">Integration</p>
+          <h3 class="schrift-card__title">Beziehung als Übungsweg</h3>
+          <p class="schrift-card__excerpt">Nirgendwo zeigt sich der Stand der eigenen Praxis deutlicher als in der Nähe. Beziehung ist kein Bonus — sie ist der härteste Übungsraum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet -->
+  <div class="lead-magnet">
+    <div class="lead-magnet__inner">
+      <p class="t-label" style="color: var(--gold-light); margin-bottom: 1.5rem; display:block;">Kostenlos</p>
+      <h2 class="lead-magnet__title">7 Tage Meisterschaftspraxis</h2>
+      <p class="lead-magnet__sub">Sieben Tage — sieben konkrete Praktiken. Jeden Morgen eine Übung, jeden Abend eine Frage. Nicht zum Sammeln. Zum Leben.</p>
+      <div class="lead-magnet__form">
+        <input type="email" class="lead-magnet__input" placeholder="Deine E-Mail-Adresse">
+        <button class="lead-magnet__btn">Praxis starten</button>
+      </div>
+      <p class="lead-magnet__note">Kein Newsletter. Kein Funnel. Nur sieben Tage Praxis.</p>
+    </div>
+  </div>
+</div><!-- /schriften -->
+
+
+<!-- ========================
+     KONTAKT
+======================== -->
+<div class="page" id="page-kontakt">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Kontakt</p>
+      <h1 class="page-hero__headline">Wenn du gerufen bist —</h1>
+      <p class="page-hero__sub">Dies ist kein Serviceformular. Es ist eine Einladung zur ehrlichen Begegnung. Schreib, was dich antreibt — nicht, was sich gut anhört.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="kontakt-grid reveal">
+        <div>
+          <p class="t-label mb-3">Was erwartet dich</p>
+          <p class="prose mb-4">Ich lese jede Anfrage selbst. Ich antworte, wenn ich spüre, dass eine echte Begegnung möglich ist. Das kann ein paar Tage dauern.</p>
+          <p class="prose mb-4">Das Orientierungsgespräch ist kein Verkaufsgespräch. Es ist eine ehrliche Begegnung — für uns beide. Wenn es nicht passt, sage ich es.</p>
+          <blockquote style="font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; line-height: 1.7; color: var(--ink-mid); border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0;">
+            „Wer einen Schritt tut, tritt in ein neues Licht."
+          </blockquote>
+          <div class="note-box mt-4">
+            <p style="font-family: var(--font-serif); font-size: 0.9rem; color: var(--ink-mid); line-height: 1.75;">Klare Erwartung: Ich bestätige den Eingang deiner Anfrage. Das Orientierungsgespräch findet statt, wenn ich denke, dass ich dir wirklich helfen kann. Ich mache keine Versprechen ohne Prozess.</p>
+          </div>
+        </div>
+        <div>
+          <div class="kontakt-form">
+            <div class="form-group">
+              <label class="form-label">Dein Name</label>
+              <input type="text" class="form-input" placeholder="Wie heißt du?">
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-Mail-Adresse</label>
+              <input type="email" class="form-input" placeholder="deine@email.de">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Worum geht es?</label>
+              <div class="form-radios">
+                <label class="form-radio-label">
+                  <input type="radio" name="anfrage" value="mentoring" checked>
+                  Mentoring-Anfrage
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="anfrage" value="praxis">
+                  Praxis &amp; Schriften
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="anfrage" value="sonstiges">
+                  Sonstiges
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Was treibt dich an?</label>
+              <textarea class="form-textarea" placeholder="Schreib, was wirklich da ist — nicht, was sich gut anhört."></textarea>
+            </div>
+            <button class="btn btn--primary" style="width: 100%;" onclick="submitForm()">Anfrage senden</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /kontakt -->
+
+
+<!-- ========================
+     PROJEKTE
+======================== -->
+<div class="page" id="page-projekte">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Projekte</p>
+      <h1 class="page-hero__headline">Ausdrucksformen des Dienstes</h1>
+      <p class="page-hero__sub">Diese Projekte sind Ausdrucksformen des Dienstes. Sie sind nicht der Kern — der Kern ist der Weg.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="projekte-grid reveal">
+        <div class="projekt-card">
+          <p class="t-label mb-2">Musik · Klang · Unterricht</p>
+          <h3 class="projekt-card__title">Handpan Schule des Lebens</h3>
+          <p class="projekt-card__sub">Klang als Übungsweg · Präsenz · Verkörperung · Gemeinschaft</p>
+          <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--ink-mid); margin: 1rem 0; line-height: 1.7; font-style: italic;">Handpan nicht als Kunst — sondern als Disziplin der Präsenz. Ein Übungsweg, der zeigt, dass Musik ein Tempel sein kann.</p>
+          <span class="projekt-card__link">Mehr erfahren ↗</span>
+        </div>
+        <div class="projekt-card">
+          <p class="t-label mb-2">Instrumentenbau · Handwerk</p>
+          <h3 class="projekt-card__title">Grail Instruments</h3>
+          <p class="projekt-card__sub">Resonanz · Klang · Handwerk als Dienst</p>
+          <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--ink-mid); margin: 1rem 0; line-height: 1.7; font-style: italic;">Instrumente als Ausdrucksform des Dienstes. Jedes Instrument trägt etwas — wenn es mit Sorgfalt und Absicht gebaut wird.</p>
+          <span class="projekt-card__link">Mehr erfahren ↗</span>
+        </div>
+        <div class="projekt-card">
+          <p class="t-label mb-2">Mit Lisa · Gemeinsame Räume</p>
+          <h3 class="projekt-card__title">Naturklang</h3>
+          <p class="projekt-card__sub">Ritualarbeit · Beziehungsarbeit · Jahreskreisfeste</p>
+          <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--ink-mid); margin: 1rem 0; line-height: 1.7; font-style: italic;">Gemeinsam mit Lisa öffnen wir Praxisräume in der Natur — für Verkörperung, Rhythmus des Jahres und Beziehung als Übungsweg.</p>
+          <a href="https://naturklang.net" target="_blank" class="projekt-card__link">naturklang.net ↗</a>
+        </div>
+        <div class="projekt-card">
+          <p class="t-label mb-2">Archiv · Unterbau</p>
+          <h3 class="projekt-card__title">The Art of Listening</h3>
+          <p class="projekt-card__sub">Praxis des Zuhörens · Archiv · Fundament</p>
+          <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--ink-mid); margin: 1rem 0; line-height: 1.7; font-style: italic;">Zuhören als Kunst und als Disziplin. Der Unterbau vieler Praktiken, die auf diesem Weg entstanden sind.</p>
+          <span class="projekt-card__link">Mehr erfahren ↗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /projekte -->
+
+
+<!-- ========================
+     FOOTER
+======================== -->
+<footer>
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Nils Caspar</div>
+        <p class="footer__tagline">Der Weg der Meisterschaft. Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.</p>
+      </div>
+      <div>
+        <p class="footer__col-title">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="#" onclick="navigate('der-weg');return false;">Der Weg</a></li>
+          <li><a href="#" onclick="navigate('stufen');return false;">Stufen</a></li>
+          <li><a href="#" onclick="navigate('praxis');return false;">Praxis</a></li>
+          <li><a href="#" onclick="navigate('mentoring');return false;">Mentoring</a></li>
+          <li><a href="#" onclick="navigate('schriften');return false;">Schriften</a></li>
+          <li><a href="#" onclick="navigate('kontakt');return false;">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-title">Projekte</p>
+        <ul class="footer__links">
+          <li><a href="#" onclick="navigate('projekte');return false;">Alle Projekte</a></li>
+          <li><a href="https://naturklang.net" target="_blank">Naturklang ↗</a></li>
+          <li><a href="#">Handpan Schule des Lebens ↗</a></li>
+          <li><a href="#">Grail Instruments ↗</a></li>
+          <li><a href="#">The Art of Listening ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2025 Nils Caspar (Nils Böhm) · nilscaspar.de</span>
+      <div class="footer__legal">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================
+     JAVASCRIPT
+======================== -->
+<script>
+  // ===== NAVIGATION =====
+  let currentPage = 'home';
+
+  function navigate(page) {
+    if (page === currentPage) return;
+
+    // Fade out
+    document.body.classList.add('fade-out');
+
+    setTimeout(() => {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+      // Show target
+      const target = document.getElementById('page-' + page);
+      if (target) {
+        target.classList.add('active');
+        currentPage = page;
+      }
+
+      // Update nav links
+      document.querySelectorAll('.nav__links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === page);
+      });
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Fade in
+      document.body.classList.remove('fade-out');
+
+      // Trigger reveals
+      setTimeout(initReveal, 100);
+    }, 250);
+  }
+
+  // ===== SCROLL HANDLER =====
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ===== MOBILE MENU =====
+  function toggleMenu() {
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobile-menu');
+    burger.classList.toggle('open');
+    menu.classList.toggle('open');
+  }
+
+  // ===== FAQ TOGGLE =====
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+
+  // ===== SCHRIFTEN FILTER =====
+  function filterSchriften(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('#schriften-grid .schrift-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // ===== SCROLL REVEAL =====
+  function initReveal() {
+    const reveals = document.querySelectorAll('.page.active .reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  }
+
+  // ===== FORM SUBMIT =====
+  function submitForm() {
+    const btn = event.target;
+    btn.textContent = 'Gesendet — Ich melde mich.';
+    btn.style.background = 'var(--gold)';
+    btn.style.borderColor = 'var(--gold)';
+  }
+
+  // ===== INIT =====
+  document.addEventListener('DOMContentLoaded', () => {
+    initReveal();
+  });
+</script>
+</body>
+</html>
