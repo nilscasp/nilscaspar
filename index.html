@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nils Caspar — Der Weg der Meisterschaft</title>
 <meta name="description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
+<meta property="og:title" content="Nils Caspar — Der Weg der Meisterschaft">
+<meta property="og:description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nils Caspar — Der Weg der Meisterschaft">
+<meta name="twitter:description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◯</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -1190,7 +1198,6 @@
   .filter-btn:hover,
   .filter-btn.active {
     border-color: var(--ink);
-    color: var(--ink);
     background: var(--ink);
     color: var(--bg);
   }
@@ -2735,7 +2742,7 @@
               <label class="form-label">Was treibt dich an?</label>
               <textarea class="form-textarea" placeholder="Schreib, was wirklich da ist — nicht, was sich gut anhört."></textarea>
             </div>
-            <button class="btn btn--primary" style="width: 100%;" onclick="submitForm()">Anfrage senden</button>
+            <button class="btn btn--primary" style="width: 100%;" onclick="submitForm(this)">Anfrage senden</button>
           </div>
         </div>
       </div>
@@ -2793,6 +2800,65 @@
 
 
 <!-- ========================
+     IMPRESSUM
+======================== -->
+<div class="page" id="page-impressum">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Rechtliches</p>
+      <h1 class="page-hero__headline">Impressum</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal">
+        <p><strong>Angaben gemäß § 5 TMG:</strong></p>
+        <p>Nils Böhm (Nils Caspar)<br>
+        [Adresse einfügen]<br>
+        [PLZ Ort]</p>
+        <p><strong>Kontakt:</strong><br>
+        E-Mail: [E-Mail-Adresse einfügen]</p>
+        <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+        Nils Böhm<br>
+        [Adresse einfügen]</p>
+        <p><em>Bitte ergänze hier deine vollständigen Angaben vor dem Livegang.</em></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     DATENSCHUTZ
+======================== -->
+<div class="page" id="page-datenschutz">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Rechtliches</p>
+      <h1 class="page-hero__headline">Datenschutzerklärung</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal">
+        <p><strong>1. Verantwortlicher</strong></p>
+        <p>Nils Böhm (Nils Caspar)<br>
+        [Adresse einfügen]<br>
+        E-Mail: [E-Mail-Adresse einfügen]</p>
+        <p><strong>2. Hosting</strong></p>
+        <p>Diese Website wird über GitHub Pages gehostet. Anbieter ist die GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. Beim Besuch dieser Website werden vom Hosting-Anbieter automatisch Informationen in sogenannten Server-Log-Dateien gespeichert, die Ihr Browser automatisch übermittelt (IP-Adresse, Browsertyp, Betriebssystem, Referrer-URL, Uhrzeit der Serveranfrage).</p>
+        <p><strong>3. Externe Dienste</strong></p>
+        <p>Diese Website nutzt Google Fonts. Beim Aufruf der Seite wird eine Verbindung zu Servern von Google (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) hergestellt. Dabei wird Ihre IP-Adresse an Google übermittelt. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--gold); border-bottom: 1px solid var(--gold);">Google Datenschutzerklärung</a>.</p>
+        <p><strong>4. Kontaktformular</strong></p>
+        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+        <p><strong>5. Ihre Rechte</strong></p>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Bitte wenden Sie sich dazu an die oben genannte Kontaktadresse.</p>
+        <p><em>Bitte ergänze hier deine vollständigen Angaben und lass die Datenschutzerklärung ggf. rechtlich prüfen.</em></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
      FOOTER
 ======================== -->
 <footer>
@@ -2825,10 +2891,10 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© 2025 Nils Caspar (Nils Böhm) · nilscaspar.de</span>
+      <span>© 2025–2026 Nils Caspar (Nils Böhm) · nilscaspar.de</span>
       <div class="footer__legal">
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
+        <a href="#" onclick="navigate('impressum');return false;">Impressum</a>
+        <a href="#" onclick="navigate('datenschutz');return false;">Datenschutz</a>
       </div>
     </div>
   </div>
@@ -2926,11 +2992,11 @@
   }
 
   // ===== FORM SUBMIT =====
-  function submitForm() {
-    const btn = event.target;
+  function submitForm(btn) {
     btn.textContent = 'Gesendet — Ich melde mich.';
     btn.style.background = 'var(--gold)';
     btn.style.borderColor = 'var(--gold)';
+    btn.disabled = true;
   }
 
   // ===== INIT =====
