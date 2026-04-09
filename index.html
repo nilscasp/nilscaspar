@@ -1131,6 +1131,11 @@
     .ablauf-steps { grid-template-columns: repeat(2, 1fr); }
   }
 
+  .ablauf-steps--three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 700px) {
+    .ablauf-steps--three { grid-template-columns: 1fr; }
+  }
+
   .faq-item {
     border-bottom: 1px solid var(--line);
     overflow: hidden;
@@ -2022,7 +2027,7 @@
       <p class="hero__note">Nicht Worte führen. Taten führen.</p>
       <div class="hero__actions">
         <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
-        <button class="btn btn--secondary" onclick="navigate('schriften')">Eine Praxis erhalten</button>
+        <button class="btn btn--secondary" onclick="navigate('praxis-erhalten')">Eine Praxis erhalten</button>
       </div>
     </div>
     <div class="hero__scroll">
@@ -2768,7 +2773,7 @@
       <div class="ornament reveal">Praxis beginnt jetzt</div>
 
       <div class="text-center reveal mt-4">
-        <button class="btn btn--primary" onclick="navigate('schriften')">Eine Praxis erhalten</button>
+        <button class="btn btn--primary" onclick="navigate('praxis-erhalten')">Eine Praxis erhalten</button>
         &nbsp;&nbsp;
         <button class="btn btn--secondary" onclick="navigate('kontakt')">In Resonanz treten</button>
       </div>
@@ -2969,7 +2974,7 @@
       <div class="mt-6 text-center reveal">
         <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
         &nbsp;&nbsp;
-        <button class="btn btn--secondary" onclick="navigate('schriften')">Eine Praxis erhalten</button>
+        <button class="btn btn--secondary" onclick="navigate('praxis-erhalten')">Eine Praxis erhalten</button>
       </div>
     </div>
   </section>
@@ -3317,6 +3322,113 @@
   </section>
 
 </div><!-- /retreat-oberhorn -->
+
+
+<!-- ========================
+     PRAXIS ERHALTEN
+======================== -->
+<div class="page" id="page-praxis-erhalten">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Praxis</p>
+      <h1 class="page-hero__headline">Eine Praxis, die zu dir gehört.</h1>
+      <p class="page-hero__sub">Nicht eine Methode aus dem Regal. Eine Praxis, die aus deinem Leben entsteht — durch ein Gespräch.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal" style="max-width: 720px; margin: 0 auto;">
+        <p>Es gibt Praktiken, die jeder üben kann. Und es gibt eine Praxis, die nur für dich gemacht ist.</p>
+        <p>Der Unterschied ist nicht die Technik. Der Unterschied ist, dass sie auf deinem Leben steht — auf dem, was du gerade trägst, wo du stehst, was du suchst, woran du dich reibst.</p>
+        <p>Generische Übungen sind ein Anfang. Aber wer ernsthaft gehen will, braucht irgendwann eine Praxis, die nicht aus einem Buch kommt — sondern aus einer Begegnung.</p>
+        <p><em>Das ist, worum es hier geht.</em></p>
+        <p>Ich biete keine Liste von Übungen an, aus der du dir etwas aussuchst. Ich höre zu. Und dann empfehle ich — oder entwerfe — eine Praxis, die zu dir passt. Konkret. Umsetzbar. Nah an deinem Alltag.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Ablauf</p>
+          <h2 class="section-header__title">Wie das geht</h2>
+        </div>
+      </div>
+      <div class="ablauf-steps ablauf-steps--three reveal">
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">1</div>
+          <h3 class="ablauf-step__title">Anfrage</h3>
+          <p class="ablauf-step__text">Du schreibst mir, was dich bewegt. Wo du stehst. Was du suchst. Ein paar Zeilen genügen.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">2</div>
+          <h3 class="ablauf-step__title">Gespräch</h3>
+          <p class="ablauf-step__text">Ein kurzes Gespräch — kein Verkauf, kein Formular. Ein Zuhören, das die Richtung erkennt.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-step__num">3</div>
+          <h3 class="ablauf-step__title">Praxis</h3>
+          <p class="ablauf-step__text">Ich empfehle oder entwerfe eine Praxis für dich. Konkret. Tragend. Prüfbar im Alltag.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block reveal">
+        <div>
+          <p class="t-label mb-3">Was du erhältst</p>
+          <h2 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; font-style: italic; margin-bottom: 1.5rem;">Keine Auswahl. Eine Richtung.</h2>
+          <div class="prose">
+            <p>Eine Praxis, die passt — nicht eine, die du dir zurechtlegen musst.</p>
+            <p>Klarheit, wie sie im Alltag geübt wird. Nicht als Konzept, sondern als Handlung.</p>
+            <p>Einen Einstieg, der trägt — kein Strohfeuer, keine Überforderung. Etwas, das du wirklich tun kannst, morgen früh.</p>
+          </div>
+        </div>
+        <div>
+          <p class="t-label mb-3">Was du nicht bekommst</p>
+          <ul style="list-style: none; font-family: var(--font-serif); font-size: 1rem; color: var(--ink-mid); line-height: 2;">
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Kein generisches Übungsblatt aus der Schublade</li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Kein Programm, das du nur buchen musst</li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Keine Lösung ohne Begegnung</li>
+            <li style="padding: 0.75rem 0; padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">—</span>Keine Versprechen, die ich nicht halten kann</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Für wen</p>
+          <h2 class="section-header__title">Wenn du damit etwas anfangen kannst</h2>
+        </div>
+      </div>
+      <div class="prose reveal" style="max-width: 720px;">
+        <p>Dies ist für Menschen, die nicht noch eine Technik suchen — sondern einen Halt. Für Suchende, die bereit sind, Praxis als Ernstfall zu nehmen. Für jene, die gespürt haben: Bücher allein reichen nicht.</p>
+        <p>Wer eine schnelle Übung will, findet sie an vielen Orten. Wer eine Praxis sucht, die ihn wirklich kennt, ist hier richtig.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <p class="t-label mb-3">Schritt</p>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 400; font-style: italic; margin-bottom: 1.5rem;">Schreib mir, was dich bewegt.</h2>
+        <p class="prose mb-4" style="max-width: 560px; margin-left: auto; margin-right: auto;">Ich lese jede Anfrage selbst. Ich antworte, wenn ich spüre, dass eine echte Begegnung möglich ist. Daraus entsteht alles Weitere.</p>
+        <div class="mt-4">
+          <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /praxis-erhalten -->
 
 
 <!-- ========================
