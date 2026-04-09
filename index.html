@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nils Caspar — Der Weg der Meisterschaft</title>
-<meta name="description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
-<meta property="og:title" content="Nils Caspar — Der Weg der Meisterschaft">
-<meta property="og:description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
+<title>Guruchhaya · Im Schatten des Lehrers</title>
+<meta name="description" content="Ein Werk der Weitergabe. Im Schatten des Lehrers — getragen von Nils Caspar. Frei von Doktrin, nicht frei von Herkunft.">
+<meta property="og:title" content="Guruchhaya · Im Schatten des Lehrers">
+<meta property="og:description" content="Ein Werk der Weitergabe. Im Schatten des Lehrers — getragen von Nils Caspar. Frei von Doktrin, nicht frei von Herkunft.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nils Caspar — Der Weg der Meisterschaft">
-<meta name="twitter:description" content="Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.">
+<meta name="twitter:title" content="Guruchhaya · Im Schatten des Lehrers">
+<meta name="twitter:description" content="Ein Werk der Weitergabe. Im Schatten des Lehrers — getragen von Nils Caspar. Frei von Doktrin, nicht frei von Herkunft.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◯</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -423,6 +423,24 @@
     opacity: 0;
     animation: fadeUp 1s var(--slow) 0.9s forwards;
   }
+
+  .hero__bearer {
+    margin-top: 2.5rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 1s var(--slow) 1.05s forwards;
+  }
+  .hero__bearer a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(140, 116, 64, 0.35);
+    transition: border-color 0.25s var(--ease);
+  }
+  .hero__bearer a:hover { border-bottom-color: var(--gold); }
 
   .hero__scroll {
     position: absolute;
@@ -1993,10 +2011,11 @@
 ======================== -->
 <nav class="nav" id="nav">
   <div class="nav__logo" onclick="navigate('home')">
-    Nils<span> Caspar</span>
+    Guruchhaya
   </div>
   <ul class="nav__links">
     <li><a href="#" onclick="navigate('der-weg');return false;" data-page="der-weg">Der Weg</a></li>
+    <li><a href="#" onclick="navigate('herkunft');return false;" data-page="herkunft">Herkunft</a></li>
     <li><a href="#" onclick="navigate('stufen');return false;" data-page="stufen">Stufen</a></li>
     <li><a href="#" onclick="navigate('praxis');return false;" data-page="praxis">Praxis</a></li>
     <li><a href="#" onclick="navigate('termine');return false;" data-page="termine">Termine</a></li>
@@ -2013,6 +2032,7 @@
 <!-- Mobile Menu -->
 <div class="nav__mobile" id="mobile-menu">
   <a href="#" onclick="navigate('der-weg');toggleMenu();return false;">Der Weg</a>
+  <a href="#" onclick="navigate('herkunft');toggleMenu();return false;">Herkunft</a>
   <a href="#" onclick="navigate('stufen');toggleMenu();return false;">Stufen</a>
   <a href="#" onclick="navigate('praxis');toggleMenu();return false;">Praxis</a>
   <a href="#" onclick="navigate('termine');toggleMenu();return false;">Termine</a>
@@ -2031,14 +2051,15 @@
     <div class="hero__bg"></div>
     <div class="hero__line-v"></div>
     <div class="hero__content">
-      <p class="t-label hero__label">nilscaspar.de · Meisterschaft · Mentoring</p>
+      <p class="t-label hero__label">Guruchhaya · गुरुछाया · Im Schatten des Lehrers</p>
       <h1 class="hero__headline">Der Weg der <em>Meisterschaft</em></h1>
-      <p class="hero__subline">Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.</p>
+      <p class="hero__subline">Ein Werk der Weitergabe. Frei von Doktrin, nicht frei von Herkunft. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.</p>
       <p class="hero__note">Nicht Worte führen. Taten führen.</p>
       <div class="hero__actions">
         <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
         <button class="btn btn--secondary" onclick="navigate('praxis-erhalten')">Eine Praxis erhalten</button>
       </div>
+      <p class="hero__bearer">Getragen von Nils Caspar · <a href="#" onclick="navigate('herkunft');return false;">Herkunft</a></p>
     </div>
     <div class="hero__scroll">
       <span class="hero__scroll-text">Weiter</span>
@@ -2357,6 +2378,81 @@
     </div>
   </section>
 </div><!-- /der-weg -->
+
+
+<!-- ========================
+     HERKUNFT
+======================== -->
+<div class="page" id="page-herkunft">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Herkunft</p>
+      <h1 class="page-hero__headline">Im Schatten des Lehrers.</h1>
+      <p class="page-hero__sub">Dieses Werk trägt einen Namen, den es nicht selbst gewählt hat.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal" style="max-width: 720px; margin: 0 auto;">
+        <p class="t-label mb-3">Was der Name bedeutet</p>
+        <p style="font-style: italic;">Guruchhaya — गुरुछाया — bedeutet wörtlich: im Schatten des Lehrers.</p>
+        <p>In der hinduistischen Tradition ist dieser Schatten kein Ort der Dunkelheit. Er ist der Ort, an dem der Schüler vor der sengenden Sonne der Unwissenheit geschützt wird. Er ist der Ort, an dem man nah genug am Licht ist, dass ein Schatten überhaupt fällt. Und er ist der Ort, an dem das, was weitergegeben wird, die Gestalt dessen trägt, aus dem es kommt.</p>
+        <p>Im Schatten zu stehen ist nicht klein sein. Es ist nah sein.</p>
+        <p>Es ist demütig sein — nicht aus Schwäche, sondern aus Erkenntnis, dass die Quelle nicht ich bin.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="content-block reveal">
+        <div class="prose">
+          <p class="t-label mb-3">Wer den Namen gegeben hat</p>
+          <p>Den Namen hat mir mein spiritueller Lehrer gegeben — <strong>Shri Shivkrupanand Swami</strong>. Er hat etwa zwanzig Jahre bei Meistern im Himalaya verbracht und das, was ihm dort gegeben wurde, seit der Jahrtausendwende in die Welt getragen. Seine Arbeit steht in der Tradition der <em>Himalaya Samarpan Meditation</em>.</p>
+          <blockquote style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--ink-mid);">
+            „Ich bin der Kellner, der das Mahl serviert — nicht der Koch, der es zubereitet hat."
+            <span style="display: block; font-style: normal; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--ink-light); margin-top: 0.75rem;">— SHRI SHIVKRUPANAND SWAMI</span>
+          </blockquote>
+          <p>Das ist kein koketter Satz. Es ist das genaue Bild dessen, was Weitergabe ist: Er trägt, was ihm gegeben wurde. Und gibt es weiter — so auch an mich.</p>
+          <p>Der Name <em>Guruchhaya</em> ist Ausdruck dieser Kette.</p>
+        </div>
+        <div class="reveal">
+          <p class="t-label mb-3">Eckdaten</p>
+          <div class="note-box">
+            <p style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.85; color: var(--ink-mid);"><strong>Name</strong><br>Shri Shivkrupanand Swami</p>
+            <p style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.85; color: var(--ink-mid); margin-top: 1em;"><strong>Tradition</strong><br>Himalaya Samarpan Meditation</p>
+            <p style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.85; color: var(--ink-mid); margin-top: 1em;"><strong>Linie</strong><br>Ca. 20 Jahre bei Meistern im Himalaya. Bringt die Praxis seit der Jahrtausendwende in die Welt.</p>
+            <p style="margin-top: 1.5em;"><a href="https://samarpanmeditation.de/shree-shivkrupanand-swami/" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(140, 116, 64, 0.35); font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 0.05em;">samarpanmeditation.de ↗</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal" style="max-width: 720px; margin: 0 auto;">
+        <p class="t-label mb-3">Was es für dieses Werk bedeutet</p>
+        <p>Ich bin nicht die Quelle. Was ich gebe, kommt nicht aus mir allein. Es steht in einer Linie, auch wenn der Weg, den ich gehe, frei von Doktrin ist.</p>
+        <p style="font-style: italic;">Frei von Doktrin heißt nicht frei von Herkunft.</p>
+        <p>Wenn du bei mir eine Praxis erhältst, ein Mentoring beginnst, in ein Retreat kommst — dann betrittst du einen Raum, der nicht mir gehört. Er wurde mir anvertraut. Ich gebe weiter, was ich tragen kann. Nicht mehr, nicht weniger.</p>
+        <p>Das ist <em>Guruchhaya</em>. Und das ist, warum das Werk nicht unter meinem Namen läuft.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container text-center reveal">
+      <p style="font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; color: var(--ink); margin-bottom: 0.5rem;">Guruchhaya · गुरुछाया</p>
+      <p style="font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2rem;">Im Schatten des Lehrers</p>
+      <p style="font-family: var(--font-serif); font-style: italic; color: var(--gold);">— Nils</p>
+      <div class="mt-6">
+        <button class="btn btn--primary" onclick="navigate('kontakt')">In Resonanz treten</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /herkunft -->
 
 
 <!-- ========================
@@ -3621,13 +3717,14 @@
   <div class="footer__inner">
     <div class="footer__top">
       <div>
-        <div class="footer__brand">Nils Caspar</div>
-        <p class="footer__tagline">Der Weg der Meisterschaft. Frei von Doktrin. In direkter Anbindung an die Wahrheit im Menschen — und im Commitment, dem Höheren zu dienen.</p>
+        <div class="footer__brand">Guruchhaya · गुरुछाया</div>
+        <p class="footer__tagline">Der Weg der Meisterschaft. Im Schatten des Lehrers — getragen von Nils Caspar. Frei von Doktrin, nicht frei von Herkunft.</p>
       </div>
       <div>
         <p class="footer__col-title">Navigation</p>
         <ul class="footer__links">
           <li><a href="#" onclick="navigate('der-weg');return false;">Der Weg</a></li>
+          <li><a href="#" onclick="navigate('herkunft');return false;">Herkunft</a></li>
           <li><a href="#" onclick="navigate('stufen');return false;">Stufen</a></li>
           <li><a href="#" onclick="navigate('praxis');return false;">Praxis</a></li>
           <li><a href="#" onclick="navigate('mentoring');return false;">Mentoring</a></li>
@@ -3646,7 +3743,7 @@
         </ul>
       </div>
     </div>
-    <div class="footer__sigil">Guruchhaya · गुरुछाया</div>
+    <div class="footer__sigil">गुरुछाया</div>
     <div class="footer__bottom">
       <span>© 2025–2026 Nils Caspar (Nils Böhm) · nilscaspar.de</span>
       <div class="footer__legal">
