@@ -262,7 +262,7 @@
 
   @media (max-width: 900px) {
     .nav__links { display: none; }
-    .nav__cta { display: none; }
+    .nav__cta.btn { display: none; }
     .nav__burger { display: flex; }
   }
 
@@ -1562,6 +1562,383 @@
   }
 
   /* ===========================
+     TERMINE / EVENT CARDS
+  =========================== */
+  .termine-intro {
+    max-width: 65ch;
+    margin-top: 1.5rem;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .event-card {
+    background: var(--bg);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    cursor: pointer;
+    transition: background 0.3s var(--ease);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .event-card:hover { background: var(--cream); }
+
+  .event-card__main {}
+
+  .event-card__date {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .event-card__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .event-card__meta {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-light);
+    margin-bottom: 1.25rem;
+  }
+
+  .event-card__meta span + span::before {
+    content: ' · ';
+    color: var(--gold);
+    margin: 0 0.25rem;
+  }
+
+  .event-card__excerpt {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--ink-mid);
+    max-width: 58ch;
+  }
+
+  .event-card__cta {
+    align-self: end;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .event-card:hover .event-card__cta { border-color: var(--gold); }
+
+  @media (max-width: 760px) {
+    .event-card {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .event-card__cta { align-self: start; }
+  }
+
+  .events-empty {
+    text-align: center;
+    padding: clamp(3rem, 6vw, 5rem) var(--side);
+  }
+
+  .events-empty__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .events-empty__text {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    max-width: 50ch;
+    margin: 0 auto 2rem;
+  }
+
+  /* ===========================
+     RETREAT LANDING PAGE
+  =========================== */
+  .retreat-back {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding: 0.5rem 0;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .retreat-back:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .retreat-back--top {
+    margin-top: 8.5rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
+
+  .retreat-hero {
+    padding-top: 0;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .retreat-hero__label { margin-bottom: 2rem; }
+
+  .retreat-hero__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    max-width: 16ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .retreat-hero__tagline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .retreat-hero__intro {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 1.9vw, 1.3rem);
+    line-height: 1.75;
+    color: var(--ink-mid);
+    max-width: 55ch;
+  }
+
+  .retreat-facts {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 2rem 0;
+  }
+
+  .retreat-facts__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .retreat-facts__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .retreat-facts__item span:first-child {
+    color: var(--gold);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
+
+  .retreat-section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .retreat-fragen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 2.5rem 0;
+  }
+
+  @media (max-width: 760px) {
+    .retreat-fragen { grid-template-columns: 1fr; }
+  }
+
+  .retreat-frage {
+    background: var(--bg);
+    padding: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .retreat-frage:hover { background: var(--cream); }
+
+  .retreat-frage__num {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: rgba(140,116,64,0.25);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .retreat-frage__text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .retreat-leitung {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  @media (max-width: 760px) {
+    .retreat-leitung { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  .retreat-leiter__name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: var(--bg);
+  }
+
+  .retreat-leiter__role {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .retreat-leiter__text {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.8);
+  }
+
+  .retreat-rahmen {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .retreat-rahmen { grid-template-columns: 1fr; }
+  }
+
+  .retreat-rahmen li {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink);
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .retreat-rahmen li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .retreat-cta {
+    text-align: center;
+  }
+
+  .retreat-cta__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--bg);
+  }
+
+  .retreat-cta__text {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.75);
+    max-width: 48ch;
+    margin: 0 auto 2.5rem;
+  }
+
+  .retreat-cta__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .retreat-cta__note {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.5);
+  }
+
+  .retreat-location-link {
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .retreat-location-link:hover {
+    color: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  /* ===========================
      MOBILE RESPONSIVE EXTRAS
   =========================== */
   @media (max-width: 640px) {
@@ -1569,6 +1946,7 @@
     .btn { padding: 0.85rem 1.8rem; }
     .hero__actions { flex-direction: column; align-items: flex-start; }
     .hero__scroll { display: none; }
+    .retreat-facts__row { justify-content: flex-start; gap: 1.25rem 2rem; }
   }
 
   /* Line ornament */
@@ -1606,6 +1984,7 @@
     <li><a href="#" onclick="navigate('der-weg');return false;" data-page="der-weg">Der Weg</a></li>
     <li><a href="#" onclick="navigate('stufen');return false;" data-page="stufen">Stufen</a></li>
     <li><a href="#" onclick="navigate('praxis');return false;" data-page="praxis">Praxis</a></li>
+    <li><a href="#" onclick="navigate('termine');return false;" data-page="termine">Termine</a></li>
     <li><a href="#" onclick="navigate('mentoring');return false;" data-page="mentoring">Mentoring</a></li>
     <li><a href="#" onclick="navigate('schriften');return false;" data-page="schriften">Schriften</a></li>
     <li><a href="#" onclick="navigate('kontakt');return false;" data-page="kontakt">Kontakt</a></li>
@@ -1621,6 +2000,7 @@
   <a href="#" onclick="navigate('der-weg');toggleMenu();return false;">Der Weg</a>
   <a href="#" onclick="navigate('stufen');toggleMenu();return false;">Stufen</a>
   <a href="#" onclick="navigate('praxis');toggleMenu();return false;">Praxis</a>
+  <a href="#" onclick="navigate('termine');toggleMenu();return false;">Termine</a>
   <a href="#" onclick="navigate('mentoring');toggleMenu();return false;">Mentoring</a>
   <a href="#" onclick="navigate('schriften');toggleMenu();return false;">Schriften</a>
   <a href="#" onclick="navigate('kontakt');toggleMenu();return false;">Kontakt</a>
@@ -2686,6 +3066,260 @@
 
 
 <!-- ========================
+     TERMINE
+======================== -->
+<div class="page" id="page-termine">
+  <section class="page-hero">
+    <div class="container">
+      <p class="t-label page-hero__label">Termine</p>
+      <h1 class="page-hero__headline">Orte, an denen der Weg gemeinsam gegangen wird.</h1>
+      <p class="page-hero__sub termine-intro">Nicht jeder Weg wird allein gegangen. Manche Schritte geschehen im geteilten Raum — an Orten, an denen Zeit und Natur ihre eigene Arbeit tun. Hier findest du, wo und wann das möglich wird.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Kommende Begegnungen</p>
+          <h2 class="section-header__title">Was ansteht</h2>
+        </div>
+      </div>
+
+      <div class="events-grid reveal">
+        <div class="event-card" onclick="navigate('retreat-oberhorn')">
+          <div class="event-card__main">
+            <span class="event-card__date">20.–23. August 2026 · Retreat</span>
+            <h3 class="event-card__title">Retreat Oberhorn</h3>
+            <p class="event-card__meta">
+              <span>Oberhorn · 1800 m Höhe</span><span>4 Tage</span><span>max. 7 Plätze</span>
+            </p>
+            <p class="event-card__excerpt">Vier Tage auf 1800 Metern, gemeinsam mit Lisa Fuchs. In die seelische und kosmische Natur eintauchen — jenseits des bisherigen Selbstbildes. Eine rare Gelegenheit.</p>
+          </div>
+          <span class="event-card__cta">Mehr erfahren →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="events-empty reveal">
+        <h2 class="events-empty__title">Weitere Termine folgen.</h2>
+        <p class="events-empty__text">Einzelne Räume, Retreats und gemeinsame Begegnungen entstehen, wenn die Zeit dafür reif ist. Wer in Verbindung bleiben möchte, meldet sich direkt.</p>
+        <button class="btn btn--secondary" onclick="navigate('kontakt')">In Verbindung bleiben</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /termine -->
+
+
+<!-- ========================
+     RETREAT OBERHORN — Landingpage
+======================== -->
+<div class="page" id="page-retreat-oberhorn">
+
+  <!-- Back Nav -->
+  <div class="container">
+    <a class="retreat-back retreat-back--top" onclick="navigate('termine')">← Alle Termine</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="retreat-hero">
+    <div class="container">
+      <p class="t-label retreat-hero__label">Retreat · 20.–23. August 2026 · Oberhorn</p>
+      <h1 class="retreat-hero__title">Retreat Oberhorn</h1>
+      <p class="retreat-hero__tagline">Eine rare Gelegenheit.</p>
+      <p class="retreat-hero__intro">Vier Tage auf 1800 Metern Höhe. Keine Methode. Kein Programm, das dich abliefert. Ein geteilter Raum, in dem Natur, Stille und ehrliche Arbeit ihr Eigenes tun dürfen.</p>
+    </div>
+  </section>
+
+  <!-- Eckdaten-Strip -->
+  <section class="retreat-facts">
+    <div class="container">
+      <div class="retreat-facts__row reveal">
+        <div class="retreat-facts__item">
+          <span>Termin</span>
+          <span>20.–23. August 2026</span>
+        </div>
+        <div class="retreat-facts__item">
+          <span>Dauer</span>
+          <span>4 Tage</span>
+        </div>
+        <div class="retreat-facts__item">
+          <span>Ort</span>
+          <span>Oberhorn · 1800 m</span>
+        </div>
+        <div class="retreat-facts__item">
+          <span>Plätze</span>
+          <span>max. 7</span>
+        </div>
+        <div class="retreat-facts__item">
+          <span>Leitung</span>
+          <span>Nils Caspar · Lisa Fuchs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storytelling Intro -->
+  <section class="section">
+    <div class="container">
+      <div class="prose reveal" style="margin: 0 auto;">
+        <p>Ich habe lange gesucht — in Büchern, in Lehrern, in Systemen. Was mich getragen hat, war etwas anderes: die Natur. Die Berge, die Stille zwischen den Dingen, das Gefühl, dass nichts hinzugefügt werden muss, damit etwas wahr wird.</p>
+        <p>Dieses Retreat ist kein Workshop und kein Kurs. Es ist ein Raum, in dem vier Tage lang nur das bleibt, was trägt. Gemeinsam mit Lisa öffnen wir eine Zeit, in der die Fragen, die im Alltag untergehen, wieder Boden bekommen: <em>Woher komme ich? Wohin gehe ich? Wer bin ich?</em></p>
+        <p>Nicht als Konzept — sondern erlebbar. Durch die Elemente, durch die Arbeit mit dem, was der Ort gibt, durch die Übung, in einer Gruppe ehrlich zu sein.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ort -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="content-block reveal">
+        <div>
+          <p class="t-label">Der Ort</p>
+          <h2 class="retreat-section-title">Oberhorn.</h2>
+          <p class="prose">1800 Meter über dem Alltag. Bewirtschaftet von Ottmar — einem Menschen, dem das, was er tut, etwas bedeutet. Vollbiologische Küche aus dem, was um den Ort wächst. Kein Hotel. Kein Retreat-Resort. Ein Ort, an dem die Berge die erste Stimme haben.</p>
+          <p class="prose">Wenige Plätze, kurze Wege, Stille, die du nicht vorbereiten musst.</p>
+          <p style="margin-top: 1.5rem;"><a href="https://oberhorn.at" target="_blank" rel="noopener" class="retreat-location-link">Oberhorn auf oberhorn.at ↗</a></p>
+        </div>
+        <div style="border-left: 1px solid var(--line); padding-left: clamp(2rem, 5vw, 4rem);">
+          <p class="t-label mb-3">Was dich erwartet</p>
+          <ul style="list-style: none; font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink-mid); line-height: 2.1;">
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Die Höhe der Berge — 1800 m</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Vollbiologische Küche mit Wildkräutern</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Kleine Gruppe — höchstens sieben</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Vier Tage ungeteilte Zeit</li>
+            <li style="padding: 0.6rem 0;">Keine Inszenierung, kein Konzept-Theater</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Worum es geht -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label">Worum es geht</p>
+          <h2 class="section-header__title">Die drei Fragen, die bleiben.</h2>
+        </div>
+      </div>
+      <div class="retreat-fragen reveal">
+        <div class="retreat-frage">
+          <div class="retreat-frage__num">I</div>
+          <p class="retreat-frage__text">Woher komme ich?</p>
+        </div>
+        <div class="retreat-frage">
+          <div class="retreat-frage__num">II</div>
+          <p class="retreat-frage__text">Wohin gehe ich?</p>
+        </div>
+        <div class="retreat-frage">
+          <div class="retreat-frage__num">III</div>
+          <p class="retreat-frage__text">Wer bin ich?</p>
+        </div>
+      </div>
+      <div class="prose reveal" style="margin-top: 2rem;">
+        <p>Diese Fragen werden im Alltag leise, weil zu viel andere Stimmen sie übertönen. In Oberhorn haben sie wieder Raum. Wir arbeiten mit Bewusstseinstechniken und mit der direkten Verbindung zur Natur — <em>Handlungskraft und intuitive Kraft, männliche und weibliche Elemente, in Balance gebracht</em>.</p>
+        <p>Es geht nicht darum, eine neue Antwort zu lernen. Es geht darum, unter die Antworten zu kommen, die du dir bisher gegeben hast.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leitung -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <p class="t-label" style="color: var(--gold-light);">Geleitet von</p>
+          <h2 class="section-header__title" style="color: var(--bg);">Nils Caspar &amp; Lisa Fuchs.</h2>
+        </div>
+      </div>
+      <div class="retreat-leitung reveal">
+        <div class="retreat-leiter">
+          <h3 class="retreat-leiter__name">Nils Caspar</h3>
+          <p class="retreat-leiter__role">Bewusstseinsarbeit · Integration</p>
+          <p class="retreat-leiter__text">Nils arbeitet mit traditionell angebundenen Bewusstseinstechniken — frei von Doktrin, im direkten Kontakt zu dem, was im Menschen wahr ist. Sein Weg führt nicht in die Abgeschiedenheit, sondern durch Alltag, Beziehung und Verantwortung. Das Retreat bringt diese Arbeit in die Tiefe und in die Natur.</p>
+        </div>
+        <div class="retreat-leiter">
+          <h3 class="retreat-leiter__name">Lisa Fuchs</h3>
+          <p class="retreat-leiter__role">Schamanische Naturverbindung</p>
+          <p class="retreat-leiter__text">Lisa bringt den schamanischen Teil — die Verbindung zu den Elementen, zu den Naturgeistern und zu einer weiblichen, fühlenden Kraft. Ihr Weg öffnet Räume, in denen die Natur nicht Kulisse, sondern Gegenüber wird. Zusammen arbeiten wir an der Balance von Handlungskraft und intuitiver Kraft.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Für wen -->
+  <section class="section">
+    <div class="container">
+      <div class="content-block reveal">
+        <div>
+          <p class="t-label">Für wen</p>
+          <h2 class="retreat-section-title">Wer hierher gerufen ist.</h2>
+          <p class="prose">Dieses Retreat ist für Künstlerinnen und Künstler, für Musikerinnen und Musiker, für Menschen, deren Leben nicht auf der Bühne stattfindet, aber deren Weg genauso ernst gemeint ist.</p>
+          <p class="prose">Für jene, die aufgehört haben zu suchen — und bereit sind, das zu gehen, was sie längst wissen. Für Menschen in Schwellensituationen. Für Menschen, die spüren: <em>Wissen reicht nicht mehr.</em></p>
+        </div>
+        <div style="border-left: 1px solid var(--line); padding-left: clamp(2rem, 5vw, 4rem);">
+          <p class="t-label mb-3">Nicht für</p>
+          <ul style="list-style: none; font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink-mid); line-height: 2.1; font-style: italic;">
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Wer eine Methode sucht</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Wer Unterhaltung erwartet</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--line);">Wer nicht ehrlich sein will</li>
+            <li style="padding: 0.6rem 0;">Wer das Ergebnis garantiert haben will</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rahmen -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <p class="t-label">Der Rahmen</p>
+        <h2 class="retreat-section-title">Was enthalten ist.</h2>
+        <ul class="retreat-rahmen">
+          <li>Vier Tage geleitete Arbeit in kleiner Gruppe</li>
+          <li>Unterkunft in Oberhorn, 1800 m Höhe</li>
+          <li>Vollbiologische Verpflegung mit Wildkräutern</li>
+          <li>Arbeit mit Bewusstseinstechniken &amp; Naturverbindung</li>
+          <li>Leitung durch Nils Caspar und Lisa Fuchs</li>
+          <li>Zeit für Einzelgespräche &amp; Integration</li>
+        </ul>
+        <p class="prose" style="margin-top: 2rem; font-style: italic;">Preis und weitere Details auf Anfrage — wir halten die Gruppe bewusst klein und sprechen mit jedem Interessierten persönlich.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="retreat-cta reveal">
+        <h2 class="retreat-cta__title">Platz anfragen.</h2>
+        <p class="retreat-cta__text">Sieben Plätze. Persönliche Auswahl. Wenn etwas in dir diesen Raum sucht, schreib uns — ehrlich, nicht formell. Wir antworten selbst.</p>
+        <div class="retreat-cta__actions">
+          <button class="btn btn--primary" onclick="navigate('kontakt')" style="background: var(--bg); color: var(--ink); border-color: var(--bg);">Anfrage schreiben</button>
+          <p class="retreat-cta__note">Oder direkt an den Ort: <a href="https://oberhorn.at" target="_blank" rel="noopener" class="retreat-location-link" style="color: var(--gold-light); border-color: var(--gold-light);">oberhorn.at ↗</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schluss -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <p class="prose reveal" style="margin: 0 auto 2rem; font-style: italic; font-size: 1.15rem;">„Wer einen Schritt tut, tritt in ein neues Licht."</p>
+      <a class="retreat-back" onclick="navigate('termine')">← Alle Termine</a>
+    </div>
+  </section>
+
+</div><!-- /retreat-oberhorn -->
+
+
+<!-- ========================
      KONTAKT
 ======================== -->
 <div class="page" id="page-kontakt">
@@ -2924,9 +3558,10 @@
         currentPage = page;
       }
 
-      // Update nav links
+      // Update nav links (retreat-oberhorn keeps "termine" active)
+      const navPage = page === 'retreat-oberhorn' ? 'termine' : page;
       document.querySelectorAll('.nav__links a').forEach(a => {
-        a.classList.toggle('active', a.dataset.page === page);
+        a.classList.toggle('active', a.dataset.page === navPage);
       });
 
       // Scroll to top
